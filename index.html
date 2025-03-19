@@ -1,55 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0a192f" />
-    <meta
-      name="description"
-      content="Rohan Panda's Portfolio - Machine Learning Engineer specializing in GenAI and ML Systems"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Rickpoul Ghosh - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+</head>
+<body>
+    <!-- Header Section with Navigation -->
+    <header>
+        <div class="logo">Software Developer</div>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+        <nav>
+            <ul role="list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://pandaboi.github.io/my-portfolio/" />
-    <meta property="og:title" content="Rohan Panda | Portfolio" />
-    <meta property="og:description" content="Machine Learning Engineer specializing in GenAI and ML Systems" />
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="wrapper_inner">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Rickpoul Ghosh</span></h1>
+                <h2>Software Developer specialized in JAVA, Machine Learning and Web Development</h2>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn primary">View My Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://pandaboi.github.io/my-portfolio/" />
-    <meta property="twitter:title" content="Rohan Panda | Portfolio" />
-    <meta property="twitter:description" content="Machine Learning Engineer specializing in GenAI and ML Systems" />
-    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+    <!-- About Section -->
+    <section id="about">
+        <div class="wrapper_inner">
+            <h2 class="section-title">About Me</h2>
+            <div class="flex about-container">
+                <div class="about-image">
+                    <img src="https://avatars.githubusercontent.com/u/138242601?v=4" alt="Rickpoul Ghosh">
+                </div>
+                <div class="about-content">
+                    <p>I'm a passionate software developer with expertise in Java, Machine Learning, and Web Development. Currently pursuing my Bachelor's degree at BITS Pilani, I'm dedicated to creating innovative solutions that solve real-world problems.</p>
+                    <p>With experience in research and supply chain technology, I bring a unique perspective to software development that combines technical expertise with practical applications.</p>
+                  <div class="social-bar">
+                    <a href="https://github.com/rickyghosh24" target="_blank" class="github">
+                      <i class="fab fa-github"></i>
+                      <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rickpoul" target="_blank" class="linkedin">
+                      <i class="fab fa-linkedin-in"></i>
+                      <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:rickpoul24@gmail.com" class="email">
+                      <i class="fas fa-envelope"></i>
+                      <span>Email</span>
+                    </a>
+                    <a href="tel:9204491682" class="phone">
+                      <i class="fas fa-phone"></i>
+                      <span>Call</span>
+                    </a>
+                  </div>
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Rohan Panda | Portfolio</title>
-    <link
-        rel="icon"
-        href="%PUBLIC_URL%/favicon.ico"
-        type="image/x-icon"
-    />
-    <link
-        rel="shortcut icon"
-        href="%PUBLIC_URL%/favicon.ico"
-        type="image/x-icon"
-    />
 
-    <!-- WhatsApp/Open Graph -->
-    <meta property="og:site_name" content="Rohan Panda | Portfolio" />
-    <meta property="og:title" content="Rohan Panda | ML Engineer" />
-    <meta property="og:description" content="Machine Learning Engineer specializing in GenAI and ML Systems" />
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://pandaboi.github.io/my-portfolio/" />
-    <meta property="og:type" content="website" />
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+
+                    <a href="#" class="btn primary">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="wrapper_inner">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Supply Chain Intern</h3>
+                        <h4>Ramakrishna Forgings Limited</h4>
+                        <p class="date">May 2024 - July 2024</p>
+                        <ul>
+                            <li>Digitized Workflows: Java algorithms automate supply chain processes, reducing manual tasks and optimizing inventory management.</li>
+                            <li>Blockchain Security: Immutable ledger technology ensures data integrity and enables transparent tracking across all supply chain stages.</li>
+                            <li>Real-Time Visibility: IoT sensors and digital platforms provide instant insights into product location, condition, and delivery status.</li>
+                            <li>Smart Contract Automation: Self-executing blockchain contracts streamline transactions, enforce compliance, and eliminate paperwork delays.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Research Assistant</h3>
+                        <h4>BITS Pilani Hyderabad Campus</h4>
+                        <p class="date">January 2024 - Present</p>
+                        <ul>
+                            <li>Cell Balancing: Equalizes charge levels between cells to prevent premature failure and extend battery lifespan.</li>
+                            <li>Active Cooling: Uses liquid or air circulation systems to dissipate heat and maintain optimal operating temperatures.</li>
+                            <li>Thermal Materials: Incorporates phase change materials and heat-conductive components to improve temperature distribution.</li>
+                            <li>Temperature Regulation: Monitors and controls battery temperature to prevent overheating and ensure consistent performance.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="wrapper_inner">
+            <h2 class="section-title">Education</h2>
+            <div class="education-container">
+                <div class="education-item">
+                    <h3>Birla Institute of Technology and Science, Pilani</h3>
+                    <p class="degree">Bachelor of Engineering in Electronics and Communication Engineering</p>
+                    <p class="minor">Minor in Computing and Intelligence</p>
+                    <p class="date">2022 - 2026</p>
+                    <p class="location">Hyderabad, India</p>
+                    <div class="coursework">
+                        <h4>Relevant Coursework:</h4>
+                        <ul class="tags">
+                            <li>Machine Learning</li>
+                            <li>Artificial Intelligence</li>
+                            <li>Data Structures and Algorithms</li>
+                            <li>DataBase Management Systems</li>
+                            <li>Operating Systems</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <h3>Little Flower School</h3>
+                    <p class="degree">Class 12th</p>
+                    <p class="date">2020 - 2022</p>
+                    <p class="location">Jamshedpur, Jharkhand</p>
+                    <p class="gpa">GPA: 96%</p>
+                    <div class="coursework">
+                        <h4>Relevant Coursework:</h4>
+                        <ul class="tags">
+                            <li>Java</li>
+                            <li>Python</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="wrapper_inner">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">C++</div>
+                        <div class="skill-item">HTML</div>
+                        <div class="skill-item">CSS</div>
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">Git</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Domain Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">Machine Learning</div>
+                        <div class="skill-item">Artificial Intelligence</div>
+                        <div class="skill-item">Data Structures and Algorithms</div>
+                        <div class="skill-item">DataBase Management Systems</div>
+                        <div class="skill-item">Operating Systems</div>
+                        <div class="skill-item">Object Oriented Programming</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="wrapper_inner">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Social Media Database Design & Implementation</h3>
+                    <h4>BITS Pilani Hyderabad, DBMS Project</h4>
+                    <p class="date">November 2024</p>
+                    <ul>
+                        <li>Modeled social media database: Designed the database schema for user content & interactions.</li>
+                        <li>Ensured data integrity: Implemented weak entities & role-based access.</li>
+                        <li>Optimized query performance: Enhanced data retrieval efficiency.</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3>MedChat LLM</h3>
+                    <h4>BITS Pilani Hyderabad, Machine Learning Project</h4>
+                    <p class="date">October 2024</p>
+                    <ul>
+                        <li>Multimodal Chatbot: It has multimodal capabilities designed for medical consultations.</li>
+                        <li>Technology Integration: It integrates the Llama 2 model and the ChatGPT Vision API with RAG Framework.</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3>BITSBids</h3>
+                    <h4>BITS Pilani Hyderabad</h4>
+                    <p class="date">September 2024</p>
+                    <ul>
+                        <li>Full-Stack Development: Led BITSBids platform development, showcasing versatility.</li>
+                        <li>Backend Architecture: Engineered scalable Spring Boot and MySQL backend.</li>
+                        <li>Frontend Implementation: Contributed to ReactJS frontend integration.</li>
+                        <li>OOP Principles: Applied OOP for enhanced functionality.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="wrapper_inner">
+            <p>&copy; 2025 Rickpoul Ghosh. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
