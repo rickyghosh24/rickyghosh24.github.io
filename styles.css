@@ -178,7 +178,7 @@ p {
   
   /* Height adjustments for phone view */
   .your-container {
-    min-height: 100vh; /* Uses viewport height */
+    min-height: 300vh; /* Uses viewport height */
   }
 }
 
