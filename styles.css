@@ -1,8 +1,8 @@
 /**
-* CORE CONFIG
-* This powers everything from utility class generation to breakpoints
-* to enabling/disabling pre-built components/utilities.
-*/
+ * RESET & CORE CONFIG
+ * This includes box-sizing, default margin removal, typography scale,
+ * spacing scale, and color variables.
+ */
 
 /* Box sizing rules */
 *,
@@ -26,7 +26,7 @@ dd {
   margin: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+/* Remove list styles on ul, ol elements with a list role */
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
@@ -45,7 +45,7 @@ body {
   text-rendering: optimizeSpeed;
   letter-spacing: -0.01em;
   line-height: 1.6;
-  color: #333;
+  color: #333; /* Fallback text color if variables fail */
 }
 
 /* All elements that don't have a class get default styles */
@@ -90,14 +90,19 @@ select {
   --space-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
   --space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
 
-  /* Colors */
-  --color-primary: #4169e1;
-  --color-secondary: #2e8b57;
-  --color-accent: #ff6347;
-  --color-background: #f9f9f9;
-  --color-text: #333;
-  --color-light: #f5f5f5;
-  --color-dark: #222;
+  /* NEW COLOR SCHEME (based on your reference image) */
+  --color-primary: #3D52A0;    /* Darker blue/purple */
+  --color-secondary: #7091E6; /* Lighter blue */
+  --color-accent: #8697C4;    /* Muted purple-blue accent */
+  --color-light: #ADBBDA;     /* Soft, light lavender-blue */
+  --color-background: #EDEBF5;/* Very light background */
+  --color-text: #333;         /* Neutral dark text */
+  --color-dark: #222;         /* Dark fallback */
+
+  /* Additional config */
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --transition-standard: all 0.3s ease;
 }
 
 /* Typography */
@@ -166,71 +171,153 @@ p {
 }
 
 /* Responsive adjustments */
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .flex {
     flex-wrap: wrap;
   }
   
-  .flex_around, .flex_between {
+  .flex_around,
+  .flex_between {
     justify-content: center;
   }
   
-  /* Height adjustments for phone view */
   .your-container {
-    min-height: 300vh; /* Uses viewport height */
+    min-height: 300vh; /* Example for tall phone view */
   }
 }
 
+/**
+ * ANIMATIONS
+ */
 
-/* Header and Navigation */
-header {
-  background-color: var(--color-dark);
-  color: white;
-  padding: var(--space-s) 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5%;
+/* Fade In & Out */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-
-/* Adding modern design elements */
-:root {
-  --color-primary: #4169e1;
-  --color-secondary: #2e8b57;
-  --color-accent: #ff6347;
-  --color-background: #f9f9f9;
-  --color-text: #333;
-  --color-light: #f5f5f5;
-  --color-dark: #222;
-  --font-primary: 'Poppins', sans-serif;
-  --font-secondary: 'Montserrat', sans-serif;
-  --transition-standard: all 0.3s ease;
+/* Subtle Pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(61, 82, 160, 0.2);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px 0 rgba(61, 82, 160, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(61, 82, 160, 0.2);
+  }
 }
 
+/* Hero Background Float */
+@keyframes floatBg {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Button Bounce */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+/**
+ * HEADER & NAVIGATION
+ */
 body {
   font-family: var(--font-primary);
   background-color: var(--color-background);
   color: var(--color-text);
 }
 
-/* Modern Header */
+/* Main Header */
 header {
-  background-color: rgba(34, 34, 34, 0.95);
-  backdrop-filter: blur(5px);
+  background-color: var(--color-primary);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: var(--space-s) 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Hero Section Enhancement */
+nav ul {
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: var(--step-0);
+  position: relative;
+  padding: 0.5rem 0;
+  font-weight: 500;
+}
+
+/* Underline effect for nav links */
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Active state for navigation */
+nav a.active {
+  color: var(--color-accent);
+}
+
+nav a.active::after {
+  width: 100%;
+}
+
+/**
+ * HERO SECTION
+ */
 .hero {
   position: relative;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   overflow: hidden;
+  color: #fff;
+  padding: var(--space-2xl) 5%;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .hero::before {
@@ -242,6 +329,7 @@ header {
   height: 100%;
   background: url('assets/pattern.svg');
   opacity: 0.1;
+  animation: floatBg 6s ease-in-out infinite;
 }
 
 .hero-content h1 {
@@ -249,11 +337,13 @@ header {
   font-weight: 800;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .highlight {
   position: relative;
-  color: var(--color-accent);
+  color: #2bd1e3;
+  -webkit-text-stroke: 1px black; /* Black border for the letters */
   display: inline-block;
 }
 
@@ -269,14 +359,19 @@ header {
   border-radius: 4px;
 }
 
-/* Project Cards with Hover Effects */
+/**
+ * PROJECT CARDS
+ */
 .project-card {
-  background-color: white;
+  background-color: var(--color-light);
+  color: var(--color-text);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: var(--transition-standard);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   padding: 1.5rem;
+  margin-bottom: 1.5rem; /* Gap between boxes */
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .project-card:hover {
@@ -293,7 +388,10 @@ header {
   padding-left: 1.2rem;
 }
 
-/* Skills Grid Enhancement */
+
+/**
+ * SKILLS GRID
+ */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -302,7 +400,8 @@ header {
 }
 
 .skill-item {
-  background-color: white;
+  background-color: var(--color-light);
+  color: var(--color-text);
   border-radius: 8px;
   padding: 1rem;
   text-align: center;
@@ -312,12 +411,13 @@ header {
 }
 
 .skill-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: pulse 1s ease-in-out forwards;
   border-left-color: var(--color-accent);
 }
 
-/* Timeline Design for Experience */
+/**
+ * TIMELINE DESIGN
+ */
 .timeline {
   position: relative;
   max-width: 1200px;
@@ -357,7 +457,7 @@ header {
   width: 20px;
   height: 20px;
   right: -10px;
-  background-color: white;
+  background-color: var(--color-light);
   border: 4px solid var(--color-accent);
   top: 15px;
   border-radius: 50%;
@@ -370,18 +470,22 @@ header {
 
 .timeline-content {
   padding: 20px;
-  background-color: white;
+  background-color: var(--color-light);
   position: relative;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
-/* Contact Form Enhancement */
+/**
+ * CONTACT FORM
+ */
 .contact-form {
-  background-color: white;
+  background-color: var(--color-light);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .form-group {
@@ -408,10 +512,12 @@ header {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.1);
+  box-shadow: 0 0 0 3px rgba(61, 82, 160, 0.1); /* #3D52A0 in RGBA */
 }
 
-/* Social Links Enhancement */
+/**
+ * SOCIAL LINKS
+ */
 .social-links {
   display: flex;
   gap: 1rem;
@@ -428,15 +534,16 @@ header {
   color: var(--color-primary);
   border-radius: 50%;
   transition: var(--transition-standard);
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .social-links a:hover {
   background-color: var(--color-primary);
-  color: white;
+  color: #fff;
   transform: translateY(-3px);
 }
 
-/* Responsive Improvements */
+/* Responsive timeline adjustments */
 @media (max-width: 768px) {
   .timeline::after {
     left: 31px;
@@ -461,239 +568,164 @@ header {
   }
 }
 
-/* Improved Header Navigation */
-header {
-    background-color: rgba(34, 34, 34, 0.95);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem 5%;
-}
-
-nav ul {
-    display: flex;
-    gap: 2rem;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: var(--step-0);
-    position: relative;
-    padding: 0.5rem 0;
-    font-weight: 500;
-}
-
-/* Underline effect for nav links */
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--color-accent);
-    transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-/* Active state for navigation */
-nav a.active {
-    color: var(--color-accent);
-}
-
-nav a.active::after {
-    width: 100%;
-}
-
-.social-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
+/**
+ * SOCIAL BUTTONS (e.g., GitHub, LinkedIn, Email, Phone)
+ */
 .social-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.2rem;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  color: #fff;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .social-btn i {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .social-btn.github {
-    background-color: #333;
+  background-color: #333;
 }
 
 .social-btn.linkedin {
-    background-color: #0077b5;
+  background-color: #0077b5;
 }
 
 .social-btn.email {
-    background-color: #D44638;
+  background-color: #D44638;
 }
 
 .social-btn.phone {
-    background-color: #25D366;
+  background-color: #25D366;
 }
 
 .social-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: bounce 0.7s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark Theme Styles */
+
+/**
+ * SOCIAL BUTTONS (Small Rectangular Style)
+ */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.4rem 1rem; /* Smaller padding for a compact look */
+  border-radius: 4px;     /* Minimal rounding for rectangular shape */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;    /* Smaller font size */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  background: linear-gradient(45deg, #0056b3, #0099ff); /* Blue gradient */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Resume button uses the same style */
+.social-btn.resume {
+  background: linear-gradient(45deg, #0056b3, #0099ff);
+  padding: 0.6rem 1rem;
+}
+
+
+
 body {
-    background-color: #121212; /* Dark background */
-    color: #ffffff; /* Light text for contrast */
+  background: white;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  z-index: 0; /* Establish stacking context */
 }
 
-header {
-    background-color: #1e1e1e; /* Slightly lighter dark for header */
-    color: #ffffff;
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    45deg, 
+    rgba(101, 101, 255, 0.5) 0, 
+    rgba(101, 101, 255, 0.5) 4px, 
+    transparent 400px, 
+    transparent 700px
+  );
+  z-index: -1; /* Place the diagonal lines behind text */
+  pointer-events: none;
 }
 
-nav a {
-    color: #ffffff;
+
+
+/* Container for Education Items */
+.education-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  margin-top: var(--space-m);
 }
 
-nav a:hover {
-    color: #ff6347; /* Accent color */
-}
-
-.hero {
-    background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
-    color: #ffffff;
-}
-
-.project-card {
-    background-color: #1e1e1e;
-    color: #ffffff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.project-card:hover {
-    background-color: #292929;
-}
-
-.skill-item {
-    background-color: #1e1e1e;
-    color: #ffffff;
-    border-left: 3px solid #ff6347;
-}
-
-.skill-item:hover {
-    background-color: #292929;
-}
-
-footer {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-.social-links a {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-.social-links a:hover {
-    background-color: #ff6347;
-    color: #ffffff;
-}
-
-/* Additional dark theme adjustments */
-.section-title::after {
-    background-color: #ff6347;
-}
-
-.timeline::after {
-    background-color: #ff6347;
-}
-
-.timeline-content {
-    background-color: #1e1e1e;
-}
-
+/* Education Item Box */
 .education-item {
-    background-color: #1e1e1e;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
+  background-color: var(--color-light); /* Soft light lavender-blue */
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.btn.primary {
-    background-color: #ff6347;
+/* Hover Effect for Education Box */
+.education-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.btn.secondary {
-    border-color: #ff6347;
-    color: #ff6347;
+/* Education Content Typography */
+.education-content h3 {
+  color: var(--color-primary); /* Darker blue/purple */
+  margin-bottom: var(--space-s);
 }
 
-.contact-form {
-    background-color: #1e1e1e;
+.education-content .degree,
+.education-content .minor,
+.education-content .date,
+.education-content .location,
+.education-content .gpa {
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
 }
 
-.form-group input,
-.form-group textarea {
-    background-color: #292929;
-    border-color: #333;
-    color: #ffffff;
+.education-content .coursework h4 {
+  margin-top: var(--space-s);
+  margin-bottom: var(--space-xs);
+  color: var(--color-primary);
 }
 
-/* Social Media Buttons */
-.social-bar {
-    display: flex;
-    gap: 15px;
-    margin: 1.5rem 0;
+.education-content .tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.social-bar a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.social-bar a i {
-    font-size: 18px;
-}
-
-.social-bar a:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    opacity: 0.9;
-}
-
-/* Platform-specific styling */
-.social-bar .github {
-    background: #333;
-}
-
-.social-bar .linkedin {
-    background: #0077b5;
-}
-
-.social-bar .email {
-    background: #D44638;
-}
-
-.social-bar .phone {
-    background: #25D366;
+.education-content .tags li {
+  background-color: var(--color-secondary);
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
 }
