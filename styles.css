@@ -166,6 +166,7 @@ p {
 }
 
 /* Responsive adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .flex {
     flex-wrap: wrap;
@@ -174,7 +175,13 @@ p {
   .flex_around, .flex_between {
     justify-content: center;
   }
+  
+  /* Height adjustments for phone view */
+  .your-container {
+    min-height: 100vh; /* Uses viewport height */
+  }
 }
+
 
 /* Header and Navigation */
 header {
@@ -690,4 +697,3 @@ footer {
 .social-bar .phone {
     background: #25D366;
 }
-
