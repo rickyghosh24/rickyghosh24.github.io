@@ -1,96 +1,96 @@
-// Smooth scrolling for navigation links
+// Smooth scroll for internal links (with safety checks)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
     e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // close mobile nav if open
+    document.body.classList.remove('nav-open');
+    const navToggle = document.getElementById('navToggle');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
   });
 });
 
-// Project filtering
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Remove active class from all buttons
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    // Add active class to clicked button
-    button.classList.add('active');
-    
-    const filter = button.dataset.filter;
-    
-    projectCards.forEach(card => {
-      if (filter === 'all' || card.classList.contains(filter)) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
-});
-
-// Intersection Observer for scroll animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animate');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.project-card, .skill-item, .timeline-item').forEach(item => {
-  observer.observe(item);
-});
-
-// Form validation and submission
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Basic validation
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    if (name && email && message) {
-      // Show success message
-      const formSuccess = document.createElement('div');
-      formSuccess.className = 'form-success';
-      formSuccess.textContent = 'Thank you! Your message has been sent.';
-      contactForm.reset();
-      contactForm.appendChild(formSuccess);
-      
-      // Remove success message after 3 seconds
-      setTimeout(() => {
-        formSuccess.remove();
-      }, 3000);
-    }
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
+    document.body.classList.toggle('nav-open');
   });
 }
 
-// Set active class on navigation links based on scroll position
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= (sectionTop - 200)) {
-            currentSection = section.getAttribute('id');
+// Project filter handling (if buttons exist)
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+if (filterButtons.length && projectCards.length) {
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      const filter = button.dataset.filter || 'all';
+      projectCards.forEach(card => {
+        if (filter === 'all' || card.classList.contains(filter)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
         }
+      });
     });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-        }
-    });
+  });
+}
+
+// IntersectionObserver for simple reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.project-card, .skill-pill, .timeline-item, .education-item').forEach(elem => {
+  observer.observe(elem);
 });
 
+// Contact form handling (client-only)
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name')?.value?.trim();
+    const email = document.getElementById('email')?.value?.trim();
+    const message = document.getElementById('message')?.value?.trim();
+    if (!name || !email || !message) {
+      alert('Please fill all fields.');
+      return;
+    }
+    // Show a temporary confirmation (replace with Formspree/Netlify action in production)
+    const success = document.createElement('div');
+    success.className = 'form-success';
+    success.textContent = 'Thanks — your message has been recorded (client-only demo).';
+    contactForm.appendChild(success);
+    contactForm.reset();
+    setTimeout(() => success.remove(), 3500);
+  });
+}
+
+// Active nav link on scroll
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.nav-list a');
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 120;
+    if (pageYOffset >= top) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    const href = link.getAttribute('href');
+    if (href === `#${current}`) link.classList.add('active');
+  });
+});
