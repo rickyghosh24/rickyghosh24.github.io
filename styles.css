@@ -127,3 +127,12 @@ html,body{height:100%;margin:0;font-family:var(--ff-main);color:var(--white);bac
   .nav-list a{color:var(--white)}
   .nav-open .nav-list{display:flex}
 }
+
+.proj-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background: rgba(255,255,255,0.04);
+}
