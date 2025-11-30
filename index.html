@@ -116,85 +116,69 @@
         </div>
       </section>
 
-      <!-- Projects -->
-      <section id="projects" class="card-section">
-        <div class="section-head">
-          <h3>Selected Projects</h3>
+<section id="projects" class="card-section">
+  <div class="section-head">
+    <h3>Selected Projects</h3>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <article class="project-card ml">
+      <img src="/assets/medchat.png" class="proj-img" alt="MedChat thumbnail">
+
+      <div class="proj-body">
+        <h4>MedChat LLM <span class="pill">Oct 2024</span></h4>
+        <p class="muted">Multimodal medical chatbot using Llama 2, RAG, and ChatGPT Vision API.</p>
+
+        <div class="tech-row">
+          <span class="tag">Llama 2</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">FastAPI</span>
         </div>
 
-        <div class="projects-grid">
+        <div class="outcomes"><strong>Outcome:</strong> Reduced hallucinations via RAG; prototype completed.</div>
+      </div>
+    </article>
 
-          <!-- Project 1 -->
-          <article class="project-card ml">
-            <img src="./assets/medchat.png" class="proj-img" alt="MedChat thumbnail">
+    <!-- Project 2 -->
+    <article class="project-card web">
+      <img src="/assets/bitsbids.png" class="proj-img" alt="BITSBids thumbnail">
 
-            <div class="proj-body">
-              <h4>MedChat LLM <span class="pill">Oct 2024</span></h4>
-              <p class="muted">Multimodal medical chatbot using Llama 2, RAG, and ChatGPT Vision API.</p>
+      <div class="proj-body">
+        <h4>BITSBids <span class="pill">Sep 2024</span></h4>
+        <p class="muted">Auction platform with Spring Boot + MySQL backend and ReactJS UI.</p>
 
-              <div class="tech-row">
-                <span class="tag">Llama 2</span>
-                <span class="tag">LangChain</span>
-                <span class="tag">FastAPI</span>
-              </div>
-
-              <div class="outcomes"><strong>Outcome:</strong> Reduced hallucinations via RAG; prototype demo available.</div>
-
-              <div class="proj-actions">
-                <a class="action" href="#">Live Demo</a>
-                <a class="action" href="#">Code</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project-card web">
-            <img src="./assets/bitsbids.png" class="proj-img" alt="BITSBids thumbnail">
-
-            <div class="proj-body">
-              <h4>BITSBids <span class="pill">Sep 2024</span></h4>
-              <p class="muted">Auction platform with Spring Boot + MySQL and ReactJS frontend.</p>
-
-              <div class="tech-row">
-                <span class="tag">Java</span>
-                <span class="tag">Spring</span>
-                <span class="tag">React</span>
-              </div>
-
-              <div class="outcomes"><strong>Outcome:</strong> Scalable APIs with pagination & authentication.</div>
-
-              <div class="proj-actions">
-                <a class="action" href="#">Demo</a>
-                <a class="action" href="#">Code</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="project-card db">
-            <img src="./assets/socialdb.png" class="proj-img" alt="Social Media DB thumbnail">
-
-            <div class="proj-body">
-              <h4>Social Media DB Design <span class="pill">Nov 2024</span></h4>
-              <p class="muted">DBMS system with ER modeling, indexing & RBAC-based access.</p>
-
-              <div class="tech-row">
-                <span class="tag">SQL</span>
-                <span class="tag">ER Modeling</span>
-                <span class="tag">Indexing</span>
-              </div>
-
-              <div class="outcomes"><strong>Outcome:</strong> Optimized queries using indexing & denormalization.</div>
-
-              <div class="proj-actions">
-                <a class="action" href="#">Report</a>
-                <a class="action" href="#">Code</a>
-              </div>
-            </div>
-          </article>
-
+        <div class="tech-row">
+          <span class="tag">Java</span>
+          <span class="tag">Spring</span>
+          <span class="tag">React</span>
         </div>
-      </section>
+
+        <div class="outcomes"><strong>Outcome:</strong> Scalable REST APIs with pagination & authentication.</div>
+      </div>
+    </article>
+
+    <!-- Project 3 -->
+    <article class="project-card db">
+      <img src="/assets/socialdb.png" class="proj-img" alt="Social Media DB thumbnail">
+
+      <div class="proj-body">
+        <h4>Social Media DB Design <span class="pill">Nov 2024</span></h4>
+        <p class="muted">DBMS system with ER modeling, indexing, and RBAC-based access.</p>
+
+        <div class="tech-row">
+          <span class="tag">SQL</span>
+          <span class="tag">ER Modeling</span>
+          <span class="tag">Indexing</span>
+        </div>
+
+        <div class="outcomes"><strong>Outcome:</strong> Faster read performance using indexing & denormalization.</div>
+      </div>
+    </article>
+
+  </div>
+</section>
 
       <!-- Education -->
       <section id="education" class="card-section">
@@ -244,3 +228,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
