@@ -1,284 +1,269 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rickpoul Ghosh — Software Developer (Java • ML • Web)</title>
-  <meta name="description" content="Rickpoul Ghosh — Software developer at BITS Pilani. Java, Machine Learning & Full-Stack. View projects, publications and resume." />
-  <!-- Open Graph -->
+  <title>Rickpoul Ghosh — Software Developer</title>
+  <meta name="description" content="Rickpoul Ghosh — Java • Machine Learning • Full-Stack. Projects, research and resume." />
   <meta property="og:title" content="Rickpoul Ghosh — Software Developer" />
   <meta property="og:description" content="Java, Machine Learning & Full-Stack. View projects, publications and resume." />
-  <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/og-image.png" />
-  <meta property="og:url" content="https://rickyghosh24.github.io/" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fonts & icons -->
+  <!-- Fonts + Icons -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-PLACEHOLDER" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <!-- Main stylesheet -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Structured data (Person / Resume) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Rickpoul Ghosh",
-    "url": "https://rickyghosh24.github.io/",
-    "sameAs": [
-      "https://github.com/rickyghosh24",
-      "https://www.linkedin.com/in/rickpoul-ghosh-32281b200/"
-    ],
-    "jobTitle": "Software Developer",
-    "alumniOf": "Birla Institute of Technology and Science, Pilani"
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Rickpoul Ghosh",
+    "jobTitle":"Software Developer",
+    "url":"https://rickyghosh24.github.io/",
+    "sameAs":["https://github.com/rickyghosh24","https://www.linkedin.com/in/rickpoul-ghosh-32281b200/"]
   }
   </script>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="wrapper_inner header-row">
-      <div class="logo" aria-hidden="true">Rickpoul Ghosh</div>
+  <header class="topbar">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <a href="#home" class="brand-link">
+          <img src="assets/logo-small.png" alt="" class="brand-logo" aria-hidden="true">
+          <span class="brand-name">Rickpoul Ghosh</span>
+        </a>
+      </div>
 
-      <!-- Mobile toggle -->
-      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation">
-        <span class="hamburger"></span>
+      <button id="menuBtn" class="hambtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
 
-      <nav id="mainNav" class="main-nav" role="navigation" aria-label="Main navigation">
+      <nav id="mainNav" class="nav">
         <ul role="list" class="nav-list">
-          <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
           <li><a href="#contact" class="cta">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <main>
-    <section id="home" class="hero" aria-labelledby="hero-heading">
-      <div class="wrapper_inner hero-inner">
-        <div class="hero-content">
-          <h1 id="hero-heading">Hi — I'm <span class="highlight">Rickpoul Ghosh</span></h1>
-          <p class="hero-sub">Software Developer • Java • Machine Learning • Full-Stack</p>
-          <div class="hero-ctas">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a id="resumeLink" href="https://drive.google.com/file/d/1dV7ADdsY8-uPJ5T24tpVmrltgKzdupkP/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Download Resume</a>
-          </div>
-        </div>
-        <div class="hero-image" aria-hidden="true">
-          <img src="https://avatars.githubusercontent.com/u/138242601?u=e95af55f4be5b4593e5e05a91f4ba221a882ed91&v=4" alt="Rickpoul Ghosh portrait">
-        </div>
-      </div>
-    </section>
+  <main class="wrap main-grid">
+    <!-- Left column: profile card -->
+    <aside class="profile-col" aria-label="Profile">
+      <div class="profile-card">
+        <img src="https://avatars.githubusercontent.com/u/138242601?u=e95af55f4be5b4593e5e05a91f4ba221a882ed91&v=4" alt="Rickpoul Ghosh" class="profile-photo">
+        <h1 class="name">Rickpoul <span class="accent">Ghosh</span></h1>
+        <p class="role">Software Developer — Java · ML · Full-Stack</p>
 
-    <!-- About -->
-    <section id="about" class="section" aria-labelledby="about-title">
-      <div class="wrapper_inner">
-        <h2 id="about-title" class="section-title">About</h2>
-        <div class="about-grid">
-          <div class="about-text">
-            <p>I'm a software developer studying at BITS Pilani (Hyderabad). I build backend systems and production-ready ML applications — with experience in Java, Spring Boot, Python ML stacks and full-stack web apps.</p>
-            <p>I enjoy moving research ideas to working prototypes and optimizing for performance and reliability.</p>
+        <div class="profile-quick">
+          <div><strong>Location</strong><span>Hyderabad, India</span></div>
+          <div><strong>Degree</strong><span>B.E. ECE (Minor: CI)</span></div>
+          <div><strong>Email</strong><span><a href="mailto:rickpoul24@gmail.com">rickpoul24@gmail.com</a></span></div>
+        </div>
 
-            <div class="social-row" aria-hidden="false">
-              <a class="social-btn github" href="https://github.com/rickyghosh24" target="_blank" rel="noopener"> <i class="fab fa-github"></i> GitHub</a>
-              <a class="social-btn linkedin" href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" rel="noopener"> <i class="fab fa-linkedin-in"></i> LinkedIn</a>
-              <a class="social-btn email" href="mailto:rickpoul24@gmail.com"> <i class="fas fa-envelope"></i> Email</a>
-            </div>
-          </div>
-          <div class="about-stats">
-            <ul class="mini-list">
-              <li><strong>Role</strong><span> Software Developer</span></li>
-              <li><strong>Location</strong><span> Hyderabad, India</span></li>
-              <li><strong>Degree</strong><span> B.E. ECE (with Minor in CI)</span></li>
-            </ul>
-          </div>
+        <div class="socials">
+          <a href="https://github.com/rickyghosh24" target="_blank" rel="noopener" class="pill"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" rel="noopener" class="pill linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1dV7ADdsY8-uPJ5T24tpVmrltgKzdupkP/view?usp=sharing" class="pill resume" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Resume</a>
+        </div>
+
+        <div class="tech-badges">
+          <span class="badge">Java</span>
+          <span class="badge">Spring Boot</span>
+          <span class="badge">Python</span>
+          <span class="badge">ML</span>
+        </div>
+
+        <div class="mini-stats">
+          <div><strong>3</strong><small>Projects</small></div>
+          <div><strong>1</strong><small>Research</small></div>
+          <div><strong>2024</strong><small>Intern</small></div>
         </div>
       </div>
-    </section>
+    </aside>
 
-    <!-- Experience -->
-    <section id="experience" class="section" aria-labelledby="exp-title">
-      <div class="wrapper_inner">
-        <h2 id="exp-title" class="section-title">Experience</h2>
+    <!-- Right column: content -->
+    <section class="content-col">
+      <!-- Hero / Intro -->
+      <section id="about" class="hero-card">
+        <div class="hero-left">
+          <h2 class="lead">Hi, I’m <span class="accent">Rickpoul</span> — I build backend systems and production-ready ML applications.</h2>
+          <p class="lead-sub">Java • Machine Learning • Full-Stack • Research</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn primary">See projects</a>
+            <a href="mailto:rickpoul24@gmail.com" class="btn ghost">Contact</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="stats-glass">
+            <div><small>Focus</small><strong>ML & Backend</strong></div>
+            <div><small>Open to</small><strong>Internships & Research</strong></div>
+          </div>
+        </div>
+      </section>
 
-        <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-content">
-              <h3>Supply Chain Intern</h3>
-              <h4>Ramakrishna Forgings Limited</h4>
-              <p class="date">May 2024 — Jul 2024</p>
-              <ul>
-                <li>Automated inventory workflows using Java algorithms — reduced manual processing steps.</li>
-                <li>Implemented traceability features to increase visibility across the supply chain.</li>
+      <!-- Experience -->
+      <section id="experience" class="card-section">
+        <div class="section-head">
+          <h3>Experience</h3>
+        </div>
+
+        <div class="cards-row">
+          <article class="card">
+            <div class="card-left">
+              <h4>Supply Chain Intern</h4>
+              <p class="muted">Ramakrishna Forgings Ltd — May 2024 • Jul 2024</p>
+              <ul class="bullets">
+                <li>Automated inventory workflows using Java; reduced manual steps and improved throughput.</li>
+                <li>Implemented traceability features and dashboards for operations visibility.</li>
               </ul>
+            </div>
+            <div class="card-right">
+              <div class="role-badge">Intern</div>
             </div>
           </article>
 
-          <article class="timeline-item">
-            <div class="timeline-content">
-              <h3>Research Assistant</h3>
-              <h4>BITS Pilani, Hyderabad</h4>
-              <p class="date">Jan 2024 — Present</p>
-              <ul>
-                <li>Worked on battery management research: cell balancing and thermal management control logic.</li>
-                <li>Built analysis scripts and prototype testbeds for thermal distribution experiments.</li>
+          <article class="card">
+            <div class="card-left">
+              <h4>Research Assistant</h4>
+              <p class="muted">BITS Pilani, Hyderabad — Jan 2024 • Present</p>
+              <ul class="bullets">
+                <li>Battery management prototypes: cell balancing, thermal-control experiments and data analysis scripts.</li>
+                <li>Built reproducible workflows and measurement pipelines for testbeds.</li>
               </ul>
+            </div>
+            <div class="card-right">
+              <div class="role-badge dark">Research</div>
             </div>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Education -->
-    <section id="education" class="section" aria-labelledby="edu-title">
-      <div class="wrapper_inner">
-        <h2 id="edu-title" class="section-title">Education</h2>
-        <div class="education-container">
-          <div class="education-item">
-            <h3>Birla Institute of Technology and Science, Pilani</h3>
-            <p class="degree">B.E. — Electronics & Communication (Minor: Computing & Intelligence)</p>
-            <p class="date">2022 — 2026</p>
-            <ul class="tags inline">
-              <li>Machine Learning</li><li>AI</li><li>DSA</li><li>DBMS</li>
-            </ul>
-          </div>
-
-          <div class="education-item">
-            <h3>Little Flower School</h3>
-            <p class="degree">Class 12</p>
-            <p class="date">2020 — 2022</p>
-            <p>GPA: 96%</p>
+      <!-- Projects -->
+      <section id="projects" class="card-section">
+        <div class="section-head">
+          <h3>Selected Projects</h3>
+          <div class="project-filter">
+            <!-- optional filter buttons -->
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="ml">ML</button>
+            <button class="filter-btn" data-filter="web">Web</button>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section" aria-labelledby="skills-title">
-      <div class="wrapper_inner">
-        <h2 id="skills-title" class="section-title">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h4>Programming</h4>
-            <div class="skills-grid-inline">
-              <span class="skill-pill">Java</span>
-              <span class="skill-pill">C++</span>
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">SQL</span>
-              <span class="skill-pill">HTML/CSS</span>
-              <span class="skill-pill">Git</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h4>Domain</h4>
-            <div class="skills-grid-inline">
-              <span class="skill-pill">Machine Learning</span>
-              <span class="skill-pill">Data Structures</span>
-              <span class="skill-pill">DBMS</span>
-              <span class="skill-pill">Operating Systems</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section" aria-labelledby="projects-title">
-      <div class="wrapper_inner">
-        <h2 id="projects-title" class="section-title">Projects</h2>
 
         <div class="projects-grid">
-          <!-- Project card template: add demo_url and code_url as needed -->
-          <article class="project-card">
-            <h3>MedChat LLM</h3>
-            <h4>BITS Pilani — ML Project</h4>
-            <p class="date">Oct 2024</p>
-            <p class="project-desc">Multimodal medical chatbot using Llama 2 + RAG for retrieval; supports text & image queries.</p>
-            <p class="project-meta"><strong>Tech:</strong> Llama 2 • LangChain • Python • FastAPI</p>
-            <div class="project-actions">
-              <a href="#" class="small-btn" target="_blank" rel="noopener">Live demo</a>
-              <a href="#" class="small-btn" target="_blank" rel="noopener">Code</a>
+          <!-- project 1 -->
+          <article class="project-card ml">
+            <img src="assets/project-medchat.png" alt="MedChat thumbnail" class="proj-img">
+            <div class="proj-body">
+              <h4>MedChat LLM <span class="pill">Oct 2024</span></h4>
+              <p class="muted">Multimodal medical chatbot — Llama 2 + RAG; supports image & text triage.</p>
+              <div class="tech-row">
+                <span class="tag">Llama 2</span><span class="tag">LangChain</span><span class="tag">FastAPI</span>
+              </div>
+              <div class="outcomes">
+                <div><strong>Outcome:</strong> Reduced hallucinations via RAG; prototype demo available.</div>
+              </div>
+              <div class="proj-actions">
+                <a href="#" class="action">Live demo</a>
+                <a href="#" class="action">Code</a>
+              </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <h3>BITSBids</h3>
-            <h4>Full-Stack App</h4>
-            <p class="date">Sep 2024</p>
-            <p class="project-desc">Auction/bidding platform built with Spring Boot backend (MySQL) and React frontend.</p>
-            <p class="project-meta"><strong>Tech:</strong> Java • Spring Boot • React • MySQL</p>
-            <div class="project-actions">
-              <a href="#" class="small-btn" target="_blank" rel="noopener">Demo</a>
-              <a href="#" class="small-btn" target="_blank" rel="noopener">Code</a>
+          <!-- project 2 -->
+          <article class="project-card web">
+            <img src="assets/project-bids.png" alt="BITSBids thumbnail" class="proj-img">
+            <div class="proj-body">
+              <h4>BITSBids <span class="pill">Sep 2024</span></h4>
+              <p class="muted">Auction platform — Spring Boot backend and React frontend.</p>
+              <div class="tech-row">
+                <span class="tag">Java</span><span class="tag">Spring</span><span class="tag">React</span>
+              </div>
+              <div class="outcomes">
+                <div><strong>Outcome:</strong> Scalable REST APIs with pagination & auth; integrated React UI.</div>
+              </div>
+              <div class="proj-actions">
+                <a href="#" class="action">Demo</a>
+                <a href="#" class="action">Code</a>
+              </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <h3>Social Media DB Design</h3>
-            <h4>DBMS Course Project</h4>
-            <p class="date">Nov 2024</p>
-            <p class="project-desc">Design & optimization of a social media database schema with role-based access & indexing.</p>
-            <p class="project-meta"><strong>Tech:</strong> SQL • ER Modeling • Indexing</p>
-            <div class="project-actions">
-              <a href="#" class="small-btn" target="_blank" rel="noopener">Report</a>
-              <a href="#" class="small-btn" target="_blank" rel="noopener">Code</a>
+          <!-- project 3 -->
+          <article class="project-card db">
+            <img src="assets/project-db.png" alt="DB project thumbnail" class="proj-img">
+            <div class="proj-body">
+              <h4>Social Media DB Design <span class="pill">Nov 2024</span></h4>
+              <p class="muted">DBMS project — ER modeling, indexing & role-based access controls.</p>
+              <div class="tech-row">
+                <span class="tag">SQL</span><span class="tag">ER Modeling</span><span class="tag">Indexing</span>
+              </div>
+              <div class="outcomes">
+                <div><strong>Outcome:</strong> Optimized queries (index + denormalization) for faster read ops.</div>
+              </div>
+              <div class="proj-actions">
+                <a href="#" class="action">Report</a>
+                <a href="#" class="action">Code</a>
+              </div>
             </div>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section" aria-labelledby="contact-title">
-      <div class="wrapper_inner">
-        <h2 id="contact-title" class="section-title">Contact</h2>
-        <div class="contact-grid">
-          <form id="contactForm" class="contact-form" aria-label="Contact form">
-            <div class="form-row">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required>
-            </div>
-            <div class="form-row">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required>
-            </div>
-            <div class="form-row">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <div class="form-row">
-              <button type="submit" class="btn btn-primary">Send message</button>
-            </div>
+      <!-- Education -->
+      <section id="education" class="card-section">
+        <div class="section-head"><h3>Education</h3></div>
+        <div class="edu-row">
+          <div class="edu-item">
+            <h4>Birla Institute of Technology and Science, Pilani</h4>
+            <p class="muted">B.E. Electronics & Communication (Minor: Computing & Intelligence) — 2022-2026</p>
+            <div class="edu-tags"><span>Machine Learning</span><span>DSA</span><span>DBMS</span></div>
+          </div>
+          <div class="edu-item">
+            <h4>Little Flower School — Class 12</h4>
+            <p class="muted">2020–2022 — GPA: 96%</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="card-section">
+        <div class="section-head"><h3>Contact</h3></div>
+        <div class="contact-panel">
+          <form id="contactForm" class="contact-form" aria-label="Contact">
+            <div class="row"><label for="name">Name</label><input id="name" name="name" /></div>
+            <div class="row"><label for="email">Email</label><input id="email" name="email" type="email" /></div>
+            <div class="row"><label for="message">Message</label><textarea id="message" name="message" rows="5"></textarea></div>
+            <div class="row"><button class="btn primary" type="submit">Send message</button></div>
           </form>
-          <aside class="contact-info">
-            <p><strong>Email</strong><br><a href="mailto:rickpoul24@gmail.com">rickpoul24@gmail.com</a></p>
-            <p><strong>Location</strong><br>Hyderabad, India</p>
-            <p><strong>Resume</strong><br><a id="resumeLink2" href="#" target="_blank" rel="noopener">Download PDF</a></p>
+
+          <aside class="contact-aside">
+            <h4>Get in touch</h4>
+            <p>Email: <a href="mailto:rickpoul24@gmail.com">rickpoul24@gmail.com</a></p>
+            <p>Resume: <a href="https://drive.google.com/file/d/1dV7ADdsY8-uPJ5T24tpVmrltgKzdupkP/view?usp=sharing" target="_blank" rel="noopener">Download PDF</a></p>
           </aside>
         </div>
-      </div>
+      </section>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="wrapper_inner footer-row">
-      <p>© 2025 Rickpoul Ghosh — Built with ❤️</p>
-      <div class="footer-links">
-        <a href="https://github.com/rickyghosh24" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" rel="noopener">LinkedIn</a>
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <div>© 2025 Rickpoul Ghosh</div>
+      <div class="foot-links">
+        <a href="https://github.com/rickyghosh24" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
   </footer>
