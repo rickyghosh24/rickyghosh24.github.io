@@ -139,15 +139,18 @@ html,body{height:100%;margin:0;font-family:var(--ff-main);color:var(--white);bac
 
 .contact-form input,
 .contact-form textarea {
-    background-color: #1e2333;  /* lighter than the page background */
-    border: 1px solid #3a3f55;  /* subtle outlining */
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: #e8e8e8;
     padding: 12px;
     border-radius: 8px;
+    backdrop-filter: blur(4px);
 }
 
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: #7b84a3; /* lighter placeholders */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #00eaff;
+    box-shadow: 0 0 8px #00eaff;
+    outline: none;
 }
 
