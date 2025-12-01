@@ -19,7 +19,7 @@
     <div class="wrap header-inner">
       <div class="brand">
         <a href="#home" class="brand-link">
-          <img src="./assets/logo-small.png" class="brand-logo">
+          <img src="./assets/logo-small.png" class="brand-logo" alt="">
           <span class="brand-name">Rickpoul Ghosh</span>
         </a>
       </div>
@@ -45,7 +45,7 @@
     <!-- Left profile column -->
     <aside class="profile-col">
       <div class="profile-card">
-        <img src="https://avatars.githubusercontent.com/u/138242601?u=e95af55f4be5b4593e5e05a91f4ba221a882ed91&v=4" class="profile-photo">
+        <img src="https://avatars.githubusercontent.com/u/138242601?u=e95af55f4be5b4593e5e05a91f4ba221a882ed91&v=4" class="profile-photo" alt="Rickpoul portrait">
 
         <h1 class="name">Rickpoul <span class="accent">Ghosh</span></h1>
         <p class="role">Software Developer — Java · ML · Full-Stack</p>
@@ -57,9 +57,14 @@
         </div>
 
         <div class="socials">
-          <a href="https://github.com/rickyghosh24" class="pill"><i class="fab fa-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" class="pill linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-          <a href="https://drive.google.com/file/d/1dV7ADdsY8-uPJ5T24tpVmrltgKZdupkP/view?usp=sharing" class="pill resume"><i class="fas fa-file-pdf"></i> Resume</a>
+          <a href="https://github.com/rickyghosh24" class="pill" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" class="pill linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+
+          <!-- Profile Resume pill: opens Drive preview in new tab -->
+          <a href="https://drive.google.com/file/d/1CM23tg20oQxASNqayYE9xOnTuHiOCd6m/view?usp=drive_link"
+             class="pill resume" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-file-pdf"></i> Resume
+          </a>
         </div>
 
         <div class="tech-badges">
@@ -116,69 +121,70 @@
         </div>
       </section>
 
-<section id="projects" class="card-section">
-  <div class="section-head">
-    <h3>Selected Projects</h3>
-  </div>
-
-  <div class="projects-grid">
-
-    <!-- Project 1 -->
-    <article class="project-card ml">
-      <img src="/assets/medchat.png" class="proj-img" alt="MedChat thumbnail">
-
-      <div class="proj-body">
-        <h4>MedChat LLM <span class="pill">Oct 2024</span></h4>
-        <p class="muted">Multimodal medical chatbot using Llama 2, RAG, and ChatGPT Vision API.</p>
-
-        <div class="tech-row">
-          <span class="tag">Llama 2</span>
-          <span class="tag">LangChain</span>
-          <span class="tag">FastAPI</span>
+      <!-- Projects -->
+      <section id="projects" class="card-section">
+        <div class="section-head">
+          <h3>Selected Projects</h3>
         </div>
 
-        <div class="outcomes"><strong>Outcome:</strong> Reduced hallucinations via RAG; prototype completed.</div>
-      </div>
-    </article>
+        <div class="projects-grid">
 
-    <!-- Project 2 -->
-    <article class="project-card web">
-      <img src="/assets/bitsbids.png" class="proj-img" alt="BITSBids thumbnail">
+          <!-- Project 1 -->
+          <article class="project-card ml">
+            <img src="/assets/medchat.png" class="proj-img" alt="MedChat thumbnail">
 
-      <div class="proj-body">
-        <h4>BITSBids <span class="pill">Sep 2024</span></h4>
-        <p class="muted">Auction platform with Spring Boot + MySQL backend and ReactJS UI.</p>
+            <div class="proj-body">
+              <h4>MedChat LLM <span class="pill">Oct 2024</span></h4>
+              <p class="muted">Multimodal medical chatbot using Llama 2, RAG, and ChatGPT Vision API.</p>
 
-        <div class="tech-row">
-          <span class="tag">Java</span>
-          <span class="tag">Spring</span>
-          <span class="tag">React</span>
+              <div class="tech-row">
+                <span class="tag">Llama 2</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">FastAPI</span>
+              </div>
+
+              <div class="outcomes"><strong>Outcome:</strong> Reduced hallucinations via RAG; prototype completed.</div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card web">
+            <img src="/assets/bitsbids.png" class="proj-img" alt="BITSBids thumbnail">
+
+            <div class="proj-body">
+              <h4>BITSBids <span class="pill">Sep 2024</span></h4>
+              <p class="muted">Auction platform with Spring Boot + MySQL backend and ReactJS UI.</p>
+
+              <div class="tech-row">
+                <span class="tag">Java</span>
+                <span class="tag">Spring</span>
+                <span class="tag">React</span>
+              </div>
+
+              <div class="outcomes"><strong>Outcome:</strong> Scalable REST APIs with pagination & authentication.</div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card db">
+            <img src="/assets/socialdb.png" class="proj-img" alt="Social Media DB thumbnail">
+
+            <div class="proj-body">
+              <h4>Social Media DB Design <span class="pill">Nov 2024</span></h4>
+              <p class="muted">DBMS system with ER modeling, indexing & RBAC-based access.</p>
+
+              <div class="tech-row">
+                <span class="tag">SQL</span>
+                <span class="tag">ER Modeling</span>
+                <span class="tag">Indexing</span>
+              </div>
+
+              <div class="outcomes"><strong>Outcome:</strong> Optimized queries using indexing & denormalization.</div>
+            </div>
+          </article>
+
         </div>
-
-        <div class="outcomes"><strong>Outcome:</strong> Scalable REST APIs with pagination & authentication.</div>
-      </div>
-    </article>
-
-    <!-- Project 3 -->
-    <article class="project-card db">
-      <img src="/assets/socialdb.png" class="proj-img" alt="Social Media DB thumbnail">
-
-      <div class="proj-body">
-        <h4>Social Media DB Design <span class="pill">Nov 2024</span></h4>
-        <p class="muted">DBMS system with ER modeling, indexing, and RBAC-based access.</p>
-
-        <div class="tech-row">
-          <span class="tag">SQL</span>
-          <span class="tag">ER Modeling</span>
-          <span class="tag">Indexing</span>
-        </div>
-
-        <div class="outcomes"><strong>Outcome:</strong> Faster read performance using indexing & denormalization.</div>
-      </div>
-    </article>
-
-  </div>
-</section>
+      </section>
 
       <!-- Education -->
       <section id="education" class="card-section">
@@ -204,11 +210,20 @@
 
         <div class="contact-panel">
           <form id="contactForm" class="contact-form">
-            <div class="row"><label>Name</label><input id="name"></div>
-            <div class="row"><label>Email</label><input id="email" type="email"></div>
-            <div class="row"><label>Message</label><textarea id="message" rows="5"></textarea></div>
-            <button class="btn primary">Send message</button>
+            <div class="row"><label>Name</label><input id="name" name="name" /></div>
+            <div class="row"><label>Email</label><input id="email" name="email" type="email" /></div>
+            <div class="row"><label>Message</label><textarea id="message" name="message" rows="5"></textarea></div>
+            <div class="row"><button class="btn primary" type="submit">Send message</button></div>
           </form>
+
+          <aside class="contact-aside">
+            <h4>Get in touch</h4>
+            <p>Email: <a href="mailto:rickpoul24@gmail.com">rickpoul24@gmail.com</a></p>
+
+            <!-- Contact-aside resume link: provide direct download to user -->
+            <p>Resume: <a href="https://drive.google.com/uc?export=download&id=1CM23tg20oQxASNqayYE9xOnTuHiOCd6m"
+                          target="_blank" rel="noopener noreferrer">Download PDF</a></p>
+          </aside>
         </div>
       </section>
 
@@ -219,8 +234,8 @@
     <div class="wrap footer-row">
       <div>© 2025 Rickpoul Ghosh</div>
       <div class="foot-links">
-        <a href="https://github.com/rickyghosh24"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/rickyghosh24" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
   </footer>
@@ -228,4 +243,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
