@@ -68,25 +68,33 @@
 <section id="contact">
   <h3>Contact</h3>
 
-  <form action="https://formsubmit.co/rickpoul24@gmail.com" method="POST" class="contact-form">
+ <form action="https://getform.io/f/bpjxnqrb" method="POST" class="contact-form">
 
-    <!-- FormSubmit configuration -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_subject" value="New Portfolio Message from RickpoulGhosh.com">
+  <!-- Getform configuration -->
+  <input type="hidden" name="_gotcha" style="display:none !important">
+  <input type="hidden" name="_subject" value="New Portfolio Message - Rickpoul Ghosh">
 
-    <label>Name</label>
-    <input type="text" name="name" required>
+  <div class="row">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" placeholder="Your name" required>
+  </div>
 
-    <label>Email</label>
-    <input type="email" name="email" required>
+  <div class="row">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" placeholder="Your email" required>
+  </div>
 
-    <label>Message</label>
-    <textarea name="message" rows="5" required></textarea>
+  <div class="row">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+  </div>
 
-    <button type="submit">Send Message</button>
+  <div class="row">
+    <button type="submit" class="btn primary">Send message</button>
+  </div>
 
-  </form>
+</form>
+
 
   <p>Email: <a href="mailto:rickpoul24@gmail.com">rickpoul24@gmail.com</a></p>
 </section>
@@ -100,3 +108,4 @@
 
 </body>
 </html>
+
