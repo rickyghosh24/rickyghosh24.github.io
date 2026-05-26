@@ -1,238 +1,939 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rickpoul Ghosh — Software Developer</title>
-<meta name="description" content="Rickpoul Ghosh — Java • Machine Learning • Full-Stack. Projects, research and resume." />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rickpoul Ghosh · Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  background:#0d0204;
+  color:#e8e0e2;
+  overflow-x:hidden;
+  min-height:100vh;
+}
 
-<!-- Fonts & icons -->
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+/* ── PARTICLE CANVAS ── */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-<!-- Main stylesheet -->
-<link rel="stylesheet" href="styles.css" />
+/* ── RED VIGNETTE BG ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 0% 50%, rgba(180,10,30,0.28) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 100% 50%, rgba(180,10,30,0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 40% at 50% 100%, rgba(120,5,15,0.3) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;
+  height:64px;
+  background:rgba(13,2,4,0.7);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(229,23,63,0.12);
+}
+.nav-logo{
+  font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;
+  text-decoration:none;color:#fff;
+}
+.nav-logo span{color:#e5173f}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{
+  color:rgba(232,224,226,0.7);text-decoration:none;
+  font-size:0.88rem;font-weight:400;
+  transition:color .2s;
+}
+.nav-links a:hover{color:#fff}
+
+/* ── PAGE WRAPPER ── */
+.page{position:relative;z-index:1}
+
+/* ── SECTION CARD ── */
+.section-card{
+  background:rgba(22,8,10,0.82);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:18px;
+  margin:1.5rem auto;
+  max-width:1100px;
+  position:relative;
+  overflow:hidden;
+}
+.section-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% -10%, rgba(229,23,63,0.08) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* ── HERO ── */
+#home{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:7rem 2rem 4rem;
+  position:relative;z-index:1;
+}
+.hero-name{
+  font-size:clamp(3rem,8vw,5.5rem);
+  font-weight:800;
+  letter-spacing:-0.03em;
+  line-height:1.05;
+  margin-bottom:0.6rem;
+}
+.hero-name span{color:#e5173f}
+.hero-sub{
+  font-size:1.05rem;font-weight:300;
+  color:rgba(232,224,226,0.6);
+  letter-spacing:0.04em;
+  margin-bottom:2.5rem;
+}
+.hero-divider{
+  width:100%;max-width:700px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(229,23,63,0.5),transparent);
+  margin:0 auto 2.5rem;
+}
+.hero-stats{
+  display:flex;gap:5rem;justify-content:center;
+  margin-bottom:2.8rem;
+}
+.stat-num{
+  font-size:2.8rem;font-weight:800;
+  color:#e5173f;line-height:1;
+  display:block;
+}
+.stat-label{
+  font-size:0.65rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:rgba(232,224,226,0.4);
+  display:block;margin-top:0.3rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn{
+  padding:.65rem 1.6rem;border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:600;
+  letter-spacing:0.04em;text-decoration:none;
+  transition:all .2s;cursor:pointer;border:none;
+}
+.btn-red{background:#e5173f;color:#fff}
+.btn-red:hover{background:#ff2050;box-shadow:0 0 24px rgba(229,23,63,0.5)}
+.btn-ghost{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  color:rgba(232,224,226,0.8);
+}
+.btn-ghost:hover{border-color:rgba(229,23,63,0.5);color:#fff;background:rgba(229,23,63,0.08)}
+
+/* ── SECTION COMMON ── */
+.sec{padding:3.5rem 3.5rem}
+.sec-label{
+  font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:#e5173f;margin-bottom:0.6rem;
+}
+.sec-title{
+  font-size:clamp(2rem,4vw,2.8rem);font-weight:700;
+  letter-spacing:-0.02em;margin-bottom:0.8rem;
+}
+.sec-title-line{
+  width:48px;height:3px;border-radius:2px;
+  background:#e5173f;margin-bottom:2.5rem;
+}
+
+/* ── ABOUT ── */
+.about-body{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+}
+.about-text p{
+  font-size:0.92rem;color:rgba(232,224,226,0.65);
+  line-height:1.85;margin-bottom:1rem;
+}
+.about-text strong{color:#e5173f;font-weight:600}
+.about-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.chip{
+  padding:.35rem .85rem;border-radius:6px;
+  background:rgba(229,23,63,0.1);border:1px solid rgba(229,23,63,0.22);
+  font-size:.75rem;color:rgba(232,224,226,.7);
+}
+.about-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.info-tile{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  border-radius:10px;padding:1rem 1.2rem;
+}
+.info-tile-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,224,226,.35);margin-bottom:.3rem}
+.info-tile-value{font-size:.88rem;font-weight:600;color:#e8e0e2}
+
+/* ── EXPERIENCE ── */
+.exp-container{display:grid;grid-template-columns:200px 1fr;gap:0}
+.exp-sidebar{border-right:1px solid rgba(255,255,255,0.07)}
+.exp-tab-btn{
+  width:100%;background:none;border:none;cursor:pointer;
+  padding:1rem 1.5rem;text-align:left;
+  font-family:'Outfit',sans-serif;font-size:.82rem;
+  color:rgba(232,224,226,.45);
+  border-left:2px solid transparent;
+  margin-left:-1px;transition:all .2s;
+}
+.exp-tab-btn:hover{color:rgba(232,224,226,.8)}
+.exp-tab-btn.active{
+  color:#e5173f;border-left:2px solid #e5173f;
+  background:rgba(229,23,63,0.06);
+}
+.exp-content-area{padding:1.5rem 2rem}
+.exp-panel{display:none;animation:fadeUp .3s ease}
+.exp-panel.active{display:block}
+.exp-role{font-size:1.2rem;font-weight:700;margin-bottom:.3rem}
+.exp-org{font-size:.85rem;color:#e5173f;margin-bottom:.2rem}
+.exp-period{font-size:.72rem;letter-spacing:.05em;color:rgba(232,224,226,.35);margin-bottom:.8rem}
+.exp-badge{
+  display:inline-block;padding:.2rem .7rem;border-radius:5px;
+  font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.badge-active{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#4ade80}
+.badge-done{background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.15);color:rgba(148,163,184,.7)}
+.exp-list{list-style:none;margin-bottom:1rem}
+.exp-list li{
+  font-size:.85rem;color:rgba(232,224,226,.6);
+  padding:.45rem 0 .45rem 1.2rem;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  position:relative;
+}
+.exp-list li::before{content:'▹';position:absolute;left:0;color:#e5173f}
+.exp-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.exp-tag{
+  font-size:.65rem;padding:.22rem .6rem;border-radius:5px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  color:rgba(232,224,226,.45);
+}
+
+/* ── PROJECTS ── */
+.projects-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;
+}
+.proj-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;padding:1.5rem;cursor:pointer;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.proj-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#e5173f,#ff6b8a);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.proj-card:hover{
+  border-color:rgba(229,23,63,0.25);
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.5);
+}
+.proj-card:hover::after{transform:scaleX(1)}
+.proj-type{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#e5173f;margin-bottom:.5rem}
+.proj-name{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.proj-desc{font-size:.8rem;color:rgba(232,224,226,.55);line-height:1.7;margin-bottom:.9rem}
+.proj-stack{display:flex;flex-wrap:wrap;gap:.4rem}
+.proj-stk{
+  font-size:.62rem;padding:.2rem .5rem;border-radius:4px;
+  background:rgba(229,23,63,0.08);border:1px solid rgba(229,23,63,0.18);
+  color:rgba(229,23,63,.8);
+}
+.proj-outcome{
+  margin-top:.9rem;padding-top:.9rem;
+  border-top:1px solid rgba(255,255,255,0.06);
+  font-size:.75rem;color:rgba(232,224,226,.4);
+}
+.proj-outcome strong{color:#e5173f}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.skill-block{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:14px;padding:1.8rem 1.5rem;
+}
+.skill-block-title{
+  font-size:1.05rem;font-weight:700;color:#e5173f;margin-bottom:1.4rem;
+}
+.skill-items-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:.6rem;
+}
+.skill-item{
+  display:flex;align-items:center;gap:.6rem;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:8px;padding:.55rem .8rem;
+  font-size:.8rem;color:rgba(232,224,226,.75);
+  transition:all .2s;
+}
+.skill-item:hover{border-color:rgba(229,23,63,.3);color:#fff;background:rgba(229,23,63,0.06)}
+.skill-icon{font-size:1rem;flex-shrink:0}
+/* full-width items */
+.skill-item.full{grid-column:span 2}
+
+/* ── EDUCATION ── */
+.edu-card{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;padding:2rem;margin-bottom:1rem;
+}
+.edu-school{font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
+.edu-deg{font-size:.88rem;color:#e5173f;margin-bottom:.25rem}
+.edu-meta{font-size:.72rem;color:rgba(232,224,226,.35);letter-spacing:.04em;margin-bottom:1.2rem}
+.edu-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.edu-tag{
+  font-size:.7rem;padding:.28rem .7rem;border-radius:6px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  color:rgba(232,224,226,.5);
+}
+.gpa-badge{
+  display:inline-block;margin-top:.6rem;
+  padding:.28rem .8rem;border-radius:6px;
+  background:rgba(229,23,63,.1);border:1px solid rgba(229,23,63,.3);
+  font-size:.72rem;color:#e5173f;font-weight:600;
+}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-blurb{font-size:.9rem;color:rgba(232,224,226,.55);line-height:1.8;margin-bottom:1.8rem}
+.contact-link-row{
+  display:flex;align-items:center;gap:.9rem;
+  font-size:.82rem;color:rgba(232,224,226,.55);
+  text-decoration:none;margin-bottom:.9rem;
+  transition:color .2s;
+}
+.contact-link-row:hover{color:#e5173f}
+.contact-icon{
+  width:34px;height:34px;border-radius:8px;flex-shrink:0;
+  background:rgba(229,23,63,.1);border:1px solid rgba(229,23,63,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;
+}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.9rem}
+.form-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,224,226,.35)}
+.form-inp,.form-ta{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  color:#e8e0e2;padding:.7rem 1rem;border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:.85rem;
+  outline:none;transition:border-color .2s;
+}
+.form-inp:focus,.form-ta:focus{border-color:rgba(229,23,63,.4)}
+.form-ta{min-height:110px;resize:none}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:2rem;
+  font-size:.75rem;color:rgba(232,224,226,.25);
+  position:relative;z-index:1;
+}
+
+/* ── CHATBOT ── */
+.chat-fab{
+  position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;
+  width:52px;height:52px;border-radius:50%;
+  background:#e5173f;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+  box-shadow:0 4px 24px rgba(229,23,63,.45);
+  transition:transform .2s;
+}
+.chat-fab:hover{transform:scale(1.1)}
+.chat-win{
+  display:none;position:fixed;bottom:4.8rem;right:1.8rem;z-index:200;
+  width:320px;border-radius:14px;overflow:hidden;
+  background:#130608;border:1px solid rgba(229,23,63,.2);
+  box-shadow:0 20px 60px rgba(0,0,0,.7);
+  animation:fadeUp .3s ease;
+}
+.chat-win.open{display:flex;flex-direction:column}
+.chat-head{
+  padding:.9rem 1.1rem;background:rgba(229,23,63,.12);
+  border-bottom:1px solid rgba(229,23,63,.15);
+  display:flex;align-items:center;gap:.7rem;
+}
+.chat-av{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,#e5173f,#ff6b8a);
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;
+}
+.chat-hname{font-size:.82rem;font-weight:700}
+.chat-hstatus{font-size:.6rem;color:#4ade80}
+.chat-msgs{height:240px;overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.6rem}
+.msg{max-width:88%;padding:.55rem .85rem;border-radius:8px;font-size:.76rem;line-height:1.55}
+.msg.bot{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(232,224,226,.75);align-self:flex-start}
+.msg.user{background:rgba(229,23,63,.15);border:1px solid rgba(229,23,63,.25);color:#e8e0e2;align-self:flex-end}
+.chat-inp-row{display:flex;gap:.5rem;padding:.7rem;border-top:1px solid rgba(255,255,255,0.06)}
+.chat-inp{
+  flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#e8e0e2;padding:.45rem .75rem;border-radius:7px;
+  font-family:'Outfit',sans-serif;font-size:.78rem;outline:none;
+}
+.chat-send{
+  background:#e5173f;border:none;color:#fff;
+  padding:.45rem .85rem;border-radius:7px;cursor:pointer;font-size:.85rem;font-weight:700;
+}
+
+/* ── MODAL ── */
+.modal-bg{
+  display:none;position:fixed;inset:0;z-index:300;
+  background:rgba(0,0,0,.75);backdrop-filter:blur(10px);
+  align-items:center;justify-content:center;padding:2rem;
+}
+.modal-bg.open{display:flex}
+.modal-box{
+  background:#130608;border:1px solid rgba(229,23,63,.2);
+  border-radius:16px;max-width:640px;width:100%;
+  max-height:80vh;overflow-y:auto;padding:2.2rem;
+  position:relative;animation:modalIn .3s ease;
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.modal-x{
+  position:absolute;top:1rem;right:1rem;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  color:rgba(232,224,226,.5);width:26px;height:26px;border-radius:6px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.75rem;
+  transition:all .2s;
+}
+.modal-x:hover{border-color:#e5173f;color:#e5173f}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.3rem}
+.modal-sub{font-size:.78rem;color:#e5173f;margin-bottom:1.4rem}
+.modal-body{font-size:.84rem;color:rgba(232,224,226,.6);line-height:1.85}
+.modal-body h4{color:#e8e0e2;font-size:.9rem;margin:1.1rem 0 .5rem}
+.modal-body ul{padding-left:1.2rem}
+.modal-body li{margin-bottom:.4rem}
+.modal-body strong{color:#e5173f}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(229,23,63,.4);border-radius:2px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:0 1.2rem}
+  .nav-links{display:none}
+  .sec{padding:2.2rem 1.5rem}
+  .about-body,.contact-grid{grid-template-columns:1fr;gap:2rem}
+  .skills-grid{grid-template-columns:1fr}
+  .exp-container{grid-template-columns:1fr}
+  .exp-sidebar{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);display:flex;flex-wrap:wrap}
+  .hero-stats{gap:2.5rem}
+  .projects-grid{grid-template-columns:1fr}
+  .section-card{margin:1rem .75rem;border-radius:14px}
+}
+</style>
 </head>
 <body>
-<header class="topbar" role="banner">
-<div class="wrap header-inner">
-<a class="brand-link" href="#home" aria-label="Home">
-<img src="/assets/logo-small.png" class="brand-logo" alt="" onerror="this.style.display='none'">
-<span class="brand-name">Rickpoul Ghosh</span>
-</a>
 
-<button id="menuBtn" class="hambtn" aria-label="Toggle menu" aria-expanded="false">
-<span></span><span></span><span></span>
-</button>
+<canvas id="particles"></canvas>
 
-<nav id="mainNav" class="nav" aria-label="Main navigation">
-<ul class="nav-list" role="list">
-<li><a href="#about">About</a></li>
-<li><a href="#experience">Experience</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#contact" class="cta">Contact</a></li>
-</ul>
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Rick<span>poul</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
-</div>
-</header>
 
-<main class="wrap main-grid">
-<!-- LEFT: PROFILE COLUMN -->
-<aside class="profile-col" aria-label="Profile">
-<div class="profile-card">
-<img src="https://avatars.githubusercontent.com/u/138242601?u=e95af55f4be5b4593e5e05a91f4ba221a882ed91&v=4" class="profile-photo" alt="Rickpoul portrait">
+<div class="page">
 
-<h1 class="name">Rickpoul <span class="accent">Ghosh</span></h1>
-<p class="role">Software Developer — Java · ML · Full-Stack</p>
-
-<div class="profile-quick">
-<div><strong>Location</strong><span>Hyderabad, India</span></div>
-<div><strong>Degree</strong><span>B.E. ECE (Minor CI)</span></div>
-<div><strong>Email</strong><span><a href="mailto:rickpoul24@gmail.com">rickpoul24@gmail.com</a></span></div>
-</div>
-
-<div class="socials">
-<a class="pill" href="https://github.com/rickyghosh24" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-<a class="pill linkedin" href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-
-<!-- Resume preview opens Drive preview -->
-<a class="pill resume" id="resumePreview" href="https://drive.google.com/file/d/1CM23tg20oQxASNqayYE9xOnTuHiOCd6m/view?usp=drive_link"
-target="_blank" rel="noopener noreferrer">
-<i class="fas fa-file-pdf"></i> Resume
-</a>
-</div>
-
-<div class="tech-badges">
-<span class="badge">Java</span>
-<span class="badge">Spring Boot</span>
-<span class="badge">Python</span>
-<span class="badge">ML</span>
-</div>
-
-</div>
-</aside>
-
-<!-- RIGHT: MAIN CONTENT -->
-<section class="content-col">
-<section id="about" class="hero-card" aria-label="Intro">
-<div class="hero-left">
-<h2 class="lead">Hi, I’m <span class="accent">Rickpoul</span> — I build backend systems and production-ready ML applications.</h2>
-<p class="lead-sub">Java • Machine Learning • Full-Stack • Research</p>
-<div class="hero-actions">
-<a href="#projects" class="btn primary">See projects</a>
-<a href="#contact" class="btn ghost">Contact</a>
-</div>
-</div>
-<div class="hero-right">
-<div class="stats-glass">
-<div><small>Focus</small><strong>ML & Backend</strong></div>
-<div><small>Open to</small><strong>Internships & Research</strong></div>
-</div>
-</div>
+<!-- ─── HERO ─────────────────────────────────────── -->
+<section id="home">
+  <h1 class="hero-name">Rickpoul <span>Ghosh</span></h1>
+  <p class="hero-sub">Software Developer — Java · ML · Full-Stack</p>
+  <div class="hero-divider"></div>
+  <div class="hero-stats">
+    <div><span class="stat-num">3</span><span class="stat-label">Projects</span></div>
+    <div><span class="stat-num">2</span><span class="stat-label">Roles</span></div>
+    <div><span class="stat-num">96%</span><span class="stat-label">Class XII</span></div>
+  </div>
+  <div class="hero-btns">
+    <a href="https://drive.google.com/file/d/1CM23tg20oQxASNqayYE9xOnTuHiOCd6m/view" target="_blank" class="btn btn-red">Resume</a>
+    <a href="https://github.com/rickyghosh24" target="_blank" class="btn btn-ghost">GitHub</a>
+    <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+    <a href="mailto:rickpoul24@gmail.com" class="btn btn-ghost">Email</a>
+  </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="card-section" aria-label="Experience">
-<div class="section-head"><h3>Experience</h3></div>
-<div class="cards-row">
-<article class="card">
-<div class="card-left">
-<h4>Supply Chain Intern</h4>
-<p class="muted">Ramakrishna Forgings Ltd — May 2024–Jul 2024</p>
-<ul class="bullets">
-<li>Automated inventory workflows using Java and improved throughput.</li>
-<li>Built dashboards for traceability and monitoring.</li>
-</ul>
-</div>
-<div class="card-right"><div class="role-badge">Intern</div></div>
-</article>
-
-<article class="card">
-<div class="card-left">
-<h4>Research Assistant</h4>
-<p class="muted">BITS Pilani, Hyderabad — Jan 2024–Present</p>
-<ul class="bullets">
-<li>Battery management research: cell balancing & thermal control experiments.</li>
-<li>Measurement automation & analysis pipelines.</li>
-</ul>
-</div>
-<div class="card-right"><div class="role-badge dark">Research</div></div>
-</article>
-</div>
-</section>
-
-<!-- PROJECTS (thumbnails load from /assets/) -->
-<section id="projects" class="card-section" aria-label="Projects">
-<div class="section-head"><h3>Selected Projects</h3></div>
-
-<div class="projects-grid">
-<!-- MedChat -->
-<article class="project-card ml">
-<img src="/assets/medchat.png" class="proj-img" alt="MedChat thumbnail">
-<div class="proj-body">
-<h4>MedChat LLM <span class="pill">Oct 2024</span></h4>
-<p class="muted">Multimodal medical chatbot using Llama 2, RAG and ChatGPT Vision API.</p>
-<div class="tech-row">
-<span class="tag">Llama 2</span><span class="tag">LangChain</span><span class="tag">FastAPI</span>
-</div>
-<div class="outcomes"><strong>Outcome:</strong> Reduced hallucinations via RAG; prototype completed.</div>
-</div>
-</article>
-
-<!-- BITSBids -->
-<article class="project-card web">
-<img src="/assets/bitsbids.png" class="proj-img" alt="BITSBids thumbnail">
-<div class="proj-body">
-<h4>BITSBids <span class="pill">Sep 2024</span></h4>
-<p class="muted">Auction platform with Spring Boot + MySQL backend and React frontend.</p>
-<div class="tech-row">
-<span class="tag">Java</span><span class="tag">Spring</span><span class="tag">React</span>
-</div>
-<div class="outcomes"><strong>Outcome:</strong> Scalable REST APIs & auth implemented.</div>
-</div>
-</article>
-
-<!-- Social DB -->
-<article class="project-card db">
-<img src="/assets/socialdb.png" class="proj-img" alt="Social Media DB thumbnail">
-<div class="proj-body">
-<h4>Social Media DB Design <span class="pill">Nov 2024</span></h4>
-<p class="muted">DBMS project: ER modeling, indexing & RBAC-based access.</p>
-<div class="tech-row">
-<span class="tag">SQL</span><span class="tag">ER Modeling</span><span class="tag">Indexing</span>
-</div>
-<div class="outcomes"><strong>Outcome:</strong> Faster read performance using indexing & denorm.</div>
-</div>
-</article>
-</div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education" class="card-section" aria-label="Education">
-<div class="section-head"><h3>Education</h3></div>
-<div class="edu-row">
-<div class="edu-item">
-<h4>Birla Institute of Technology and Science, Pilani</h4>
-<p class="muted">B.E. Electronics & Communication — 2022–2026 (Minor: CI)</p>
-<div class="edu-tags"><span>Machine Learning</span><span>DSA</span><span>DBMS</span></div>
+<!-- ─── ABOUT ─────────────────────────────────────── -->
+<div class="section-card" id="about">
+  <div class="sec">
+    <div class="sec-label">01 — About</div>
+    <div class="sec-title">Who I Am</div>
+    <div class="sec-title-line"></div>
+    <div class="about-body">
+      <div class="about-text">
+        <p>Hi, I'm Rickpoul — a software developer and engineering student at <strong>BITS Pilani, Hyderabad</strong>, pursuing B.E. in Electronics and Communication Engineering with a Minor in Computer Intelligence.</p>
+        <p>I love building things end-to-end: from <strong>Java Spring Boot backends</strong> with clean REST APIs to <strong>production-ready ML pipelines</strong> using LangChain and modern LLMs. Whether it's a multimodal medical chatbot, a full-stack auction platform, or a database design project — I care deeply about shipping code that holds up.</p>
+        <p>On the research side, I work on <strong>battery management systems</strong> — cell balancing, thermal control, and measurement automation. I'm open to <strong>internships and research collaborations</strong>.</p>
+        <div class="about-chips">
+          <span class="chip">Java Spring Boot</span>
+          <span class="chip">Machine Learning</span>
+          <span class="chip">Full-Stack</span>
+          <span class="chip">LLMs &amp; RAG</span>
+          <span class="chip">DBMS</span>
+          <span class="chip">Research</span>
+        </div>
+      </div>
+      <div class="about-info-grid">
+        <div class="info-tile"><div class="info-tile-label">Location</div><div class="info-tile-value">Hyderabad, India</div></div>
+        <div class="info-tile"><div class="info-tile-label">Degree</div><div class="info-tile-value">B.E. ECE (Minor CI)</div></div>
+        <div class="info-tile"><div class="info-tile-label">Focus</div><div class="info-tile-value">ML &amp; Backend</div></div>
+        <div class="info-tile"><div class="info-tile-label">Open to</div><div class="info-tile-value">Internships &amp; Research</div></div>
+        <div class="info-tile" style="grid-column:span 2"><div class="info-tile-label">Email</div><div class="info-tile-value" style="font-size:.82rem">rickpoul24@gmail.com</div></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="edu-item">
-<h4>Little Flower School</h4>
-<p class="muted">Class 12 — GPA 96% (2020–2022)</p>
+<!-- ─── EXPERIENCE ────────────────────────────────── -->
+<div class="section-card" id="experience">
+  <div class="sec">
+    <div class="sec-label">02 — Experience</div>
+    <div class="sec-title">Experience</div>
+    <div class="sec-title-line"></div>
+    <div class="exp-container">
+      <div class="exp-sidebar">
+        <button class="exp-tab-btn active" onclick="showExp('rfl',this)">Ramakrishna Forgings</button>
+        <button class="exp-tab-btn" onclick="showExp('bits',this)">BITS Pilani</button>
+      </div>
+      <div class="exp-content-area">
+        <div class="exp-panel active" id="exp-rfl">
+          <div class="exp-role">Supply Chain Intern</div>
+          <div class="exp-org">Ramakrishna Forgings Ltd · Hyderabad</div>
+          <div class="exp-period">May 2024 – Jul 2024</div>
+          <span class="exp-badge badge-done">✓ completed</span>
+          <ul class="exp-list">
+            <li>Automated inventory workflows using Java, significantly improving throughput and reducing manual overhead.</li>
+            <li>Built dashboards for real-time traceability and monitoring of supply chain operations.</li>
+            <li>Worked with operations teams to translate bottlenecks into technical solutions.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Java</span>
+            <span class="exp-tag">Dashboard Tools</span>
+            <span class="exp-tag">Workflow Automation</span>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-bits">
+          <div class="exp-role">Research Assistant</div>
+          <div class="exp-org">BITS Pilani, Hyderabad — ECE Dept.</div>
+          <div class="exp-period">Jan 2024 – Present</div>
+          <span class="exp-badge badge-active">● active</span>
+          <ul class="exp-list">
+            <li>Battery management research: cell balancing and thermal control experiments.</li>
+            <li>Built measurement automation and data analysis pipelines for lab experiments.</li>
+            <li>Bridging hardware experimentation with software-driven analysis and reporting.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Python</span>
+            <span class="exp-tag">Data Analysis</span>
+            <span class="exp-tag">Measurement Automation</span>
+            <span class="exp-tag">Battery Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- ─── PROJECTS ──────────────────────────────────── -->
+<div class="section-card" id="projects">
+  <div class="sec">
+    <div class="sec-label">03 — Projects</div>
+    <div class="sec-title">Selected Projects</div>
+    <div class="sec-title-line"></div>
+    <div class="projects-grid">
+
+      <div class="proj-card" onclick="openModal('m-medchat')">
+        <div class="proj-type">NLP / Multimodal AI</div>
+        <div class="proj-name">MedChat LLM</div>
+        <div class="proj-desc">Multimodal medical chatbot using Llama 2, RAG, and ChatGPT Vision API. Answers clinical queries grounded in real documents.</div>
+        <div class="proj-stack">
+          <span class="proj-stk">Llama 2</span><span class="proj-stk">LangChain</span><span class="proj-stk">FastAPI</span><span class="proj-stk">RAG</span>
+        </div>
+        <div class="proj-outcome"><strong>Outcome:</strong> Reduced hallucinations via RAG; prototype completed · Oct 2024</div>
+      </div>
+
+      <div class="proj-card" onclick="openModal('m-bitsbids')">
+        <div class="proj-type">Full-Stack Web App</div>
+        <div class="proj-name">BITSBids</div>
+        <div class="proj-desc">Real-time auction platform with Spring Boot + MySQL backend and a React frontend. Scalable REST APIs and authentication.</div>
+        <div class="proj-stack">
+          <span class="proj-stk">Java</span><span class="proj-stk">Spring Boot</span><span class="proj-stk">React</span><span class="proj-stk">MySQL</span>
+        </div>
+        <div class="proj-outcome"><strong>Outcome:</strong> Scalable REST APIs &amp; auth implemented · Sep 2024</div>
+      </div>
+
+      <div class="proj-card" onclick="openModal('m-socialdb')">
+        <div class="proj-type">Database Engineering</div>
+        <div class="proj-name">Social Media DB Design</div>
+        <div class="proj-desc">DBMS project: ER modeling, strategic indexing, and RBAC-based access control for a social media data system.</div>
+        <div class="proj-stack">
+          <span class="proj-stk">SQL</span><span class="proj-stk">ER Modeling</span><span class="proj-stk">Indexing</span><span class="proj-stk">RBAC</span>
+        </div>
+        <div class="proj-outcome"><strong>Outcome:</strong> Faster read performance using indexing &amp; denorm · Nov 2024</div>
+      </div>
+
+    </div>
+  </div>
 </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact" class="card-section" aria-label="Contact">
-<div class="section-head"><h3>Contact</h3></div>
-<div class="contact-panel">
-         <form action="https://getform.io/f/bpjxnqrb" method="POST" class="contact-form">
+<!-- ─── SKILLS ────────────────────────────────────── -->
+<div class="section-card" id="skills">
+  <div class="sec">
+    <div class="sec-label">04 — Skills</div>
+    <div class="sec-title">Technical Arsenal</div>
+    <div class="sec-title-line"></div>
+    <div class="skills-grid">
 
-  <!-- spam protection (does not affect layout) -->
-  <input type="hidden" name="_gotcha" style="display:none !important">
+      <div class="skill-block">
+        <div class="skill-block-title">Languages</div>
+        <div class="skill-items-grid">
+          <div class="skill-item"><span class="skill-icon">☕</span>Java</div>
+          <div class="skill-item"><span class="skill-icon">🐍</span>Python</div>
+          <div class="skill-item"><span class="skill-icon">🗃️</span>SQL</div>
+          <div class="skill-item"><span class="skill-icon">⚡</span>JavaScript</div>
+          <div class="skill-item"><span class="skill-icon">⌨️</span>C</div>
+          <div class="skill-item"><span class="skill-icon">🔀</span>Git</div>
+        </div>
+      </div>
 
-  <label>Name</label>
-  <input type="text" name="name" required>
+      <div class="skill-block">
+        <div class="skill-block-title">AI / ML Frameworks</div>
+        <div class="skill-items-grid">
+          <div class="skill-item"><span class="skill-icon">🔗</span>LangChain</div>
+          <div class="skill-item"><span class="skill-icon">🦙</span>Llama 2</div>
+          <div class="skill-item"><span class="skill-icon">🔍</span>RAG</div>
+          <div class="skill-item"><span class="skill-icon">🔥</span>PyTorch</div>
+          <div class="skill-item"><span class="skill-icon">📊</span>Scikit-learn</div>
+          <div class="skill-item"><span class="skill-icon">📈</span>NumPy</div>
+          <div class="skill-item"><span class="skill-icon">🐼</span>Pandas</div>
+          <div class="skill-item"><span class="skill-icon">⚡</span>FastAPI</div>
+        </div>
+      </div>
 
-  <label>Email</label>
-  <input type="email" name="email" required>
+      <div class="skill-block">
+        <div class="skill-block-title">Backend &amp; Full-Stack</div>
+        <div class="skill-items-grid">
+          <div class="skill-item"><span class="skill-icon">🌿</span>Spring Boot</div>
+          <div class="skill-item"><span class="skill-icon">⚛️</span>React</div>
+          <div class="skill-item"><span class="skill-icon">🗄️</span>MySQL</div>
+          <div class="skill-item"><span class="skill-icon">🔌</span>REST APIs</div>
+          <div class="skill-item full"><span class="skill-icon">🎯</span>Specializations: ML · Backend · DBMS · Full-Stack</div>
+        </div>
+      </div>
 
-  <label>Message</label>
-  <textarea name="message" rows="5" required></textarea>
-
-  <button type="submit">Send Message</button>
-
-</form>
-
-
-<aside class="contact-aside">
-<h4>Get in touch</h4>
-<p>Email: <a href="mailto:rickpoul24@gmail.com">rickpoul24@gmail.com</a></p>
-
-<!-- Direct-download resume link (forces download in most browsers) -->
-<p>Resume: <a id="resumeDownload" href="https://drive.google.com/uc?export=download&id=1CM23tg20oQxASNqayYE9xOnTuHiOCd6m"
-target="_blank" rel="noopener noreferrer">Download PDF</a></p>
-</aside>
+    </div>
+  </div>
 </div>
-</section>
-</section>
-</main>
 
-<footer class="footer">
-<div class="wrap footer-row">
-<div>© 2025 Rickpoul Ghosh</div>
-<div class="foot-links">
-<a href="https://github.com/rickyghosh24" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-</div>
-</div>
-</footer>
+<!-- ─── EDUCATION ─────────────────────────────────── -->
+<div class="section-card" id="education">
+  <div class="sec">
+    <div class="sec-label">05 — Education</div>
+    <div class="sec-title">Education</div>
+    <div class="sec-title-line"></div>
 
-<script src="script.js" defer></script>
+    <div class="edu-card">
+      <div class="edu-school">Birla Institute of Technology and Science, Pilani</div>
+      <div class="edu-deg">Bachelor of Engineering — Electronics &amp; Communication Engineering</div>
+      <div class="edu-meta">Hyderabad, India &nbsp;·&nbsp; 2022 – 2026 &nbsp;·&nbsp; Minor: Computer Intelligence</div>
+      <div class="edu-tags">
+        <span class="edu-tag">Machine Learning</span>
+        <span class="edu-tag">Data Structures &amp; Algorithms</span>
+        <span class="edu-tag">DBMS</span>
+        <span class="edu-tag">Computer Networks</span>
+        <span class="edu-tag">Operating Systems</span>
+        <span class="edu-tag">OOP</span>
+        <span class="edu-tag">Signals &amp; Systems</span>
+        <span class="edu-tag">Digital Signal Processing</span>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-school">Little Flower School</div>
+      <div class="edu-deg">Class XII — Science</div>
+      <div class="edu-meta">2020 – 2022</div>
+      <div class="gpa-badge">GPA: 96%</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CONTACT ───────────────────────────────────── -->
+<div class="section-card" id="contact">
+  <div class="sec">
+    <div class="sec-label">06 — Contact</div>
+    <div class="sec-title">Get In Touch</div>
+    <div class="sec-title-line"></div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-blurb">I'm actively looking for internships and research opportunities in backend engineering, ML systems, or full-stack development. Whether it's a quick question or a collaboration — feel free to reach out.</p>
+        <a href="mailto:rickpoul24@gmail.com" class="contact-link-row">
+          <div class="contact-icon">@</div>rickpoul24@gmail.com
+        </a>
+        <a href="https://github.com/rickyghosh24" target="_blank" class="contact-link-row">
+          <div class="contact-icon">GH</div>github.com/rickyghosh24
+        </a>
+        <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" class="contact-link-row">
+          <div class="contact-icon">in</div>linkedin.com/in/rickpoul-ghosh
+        </a>
+        <a href="https://drive.google.com/uc?export=download&id=1CM23tg20oQxASNqayYE9xOnTuHiOCd6m" class="contact-link-row">
+          <div class="contact-icon">↓</div>Download Resume PDF
+        </a>
+      </div>
+      <div>
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-inp" placeholder="Your name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-inp" placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-ta" placeholder="What's on your mind?"></textarea>
+        </div>
+        <button class="btn btn-red" onclick="handleSend()">Send Message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer>🚀 Built by Rickpoul with passion for code &nbsp;·&nbsp; © 2025 Rickpoul Ghosh</footer>
+
+<!-- CHATBOT -->
+<button class="chat-fab" onclick="toggleChat()" title="Ricky-Bot">🤖</button>
+<div class="chat-win" id="chatWin">
+  <div class="chat-head">
+    <div class="chat-av">R</div>
+    <div><div class="chat-hname">Ricky-Bot</div><div class="chat-hstatus">● Online</div></div>
+  </div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="msg bot">Hey! 👋 I'm Ricky-Bot. Ask me about Rickpoul's projects, skills, experience, or contact info!</div>
+  </div>
+  <div class="chat-inp-row">
+    <input type="text" class="chat-inp" id="chatInp" placeholder="Ask me anything…" onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button class="chat-send" onclick="sendChat()">→</button>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-bg" id="m-medchat" onclick="closeMBg(event,'m-medchat')">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal('m-medchat')">✕</button>
+    <div class="modal-title">MedChat LLM</div>
+    <div class="modal-sub">Multimodal Medical Chatbot · Oct 2024</div>
+    <div class="modal-body">
+      <p>MedChat is a multimodal medical chatbot combining Llama 2 with Retrieval-Augmented Generation to deliver accurate, context-grounded clinical answers — significantly reducing hallucinations.</p>
+      <h4>Core Features</h4>
+      <ul>
+        <li>Llama 2 as backbone LLM for medical question answering</li>
+        <li>LangChain-powered RAG pipeline grounding answers in real documents</li>
+        <li>ChatGPT Vision API for analyzing medical images (X-rays, scans)</li>
+        <li>FastAPI backend for clean, scalable API serving</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p><strong>Reduced hallucinations via RAG</strong>; end-to-end prototype completed.</p>
+      <h4>Tech Stack</h4>
+      <p>Llama 2 · LangChain · FastAPI · ChatGPT Vision API · Python · Vector DB</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="m-bitsbids" onclick="closeMBg(event,'m-bitsbids')">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal('m-bitsbids')">✕</button>
+    <div class="modal-title">BITSBids</div>
+    <div class="modal-sub">Auction Platform · Sep 2024</div>
+    <div class="modal-body">
+      <p>BITSBids is a full-stack auction platform built for the BITS Pilani community with a robust Java Spring Boot backend and React frontend.</p>
+      <h4>Key Features</h4>
+      <ul>
+        <li>Scalable REST APIs designed with Spring Boot for all bidding operations</li>
+        <li>User authentication and authorization system</li>
+        <li>React frontend with real-time auction state updates</li>
+        <li>MySQL database with optimized schemas for auction listings and bids</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p><strong>Scalable REST APIs and auth implemented</strong> — fully functional prototype.</p>
+      <h4>Tech Stack</h4>
+      <p>Java · Spring Boot · React · MySQL · REST APIs</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="m-socialdb" onclick="closeMBg(event,'m-socialdb')">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal('m-socialdb')">✕</button>
+    <div class="modal-title">Social Media DB Design</div>
+    <div class="modal-sub">Database Engineering · Nov 2024</div>
+    <div class="modal-body">
+      <p>A comprehensive DBMS project designing a production-grade social media database system focused on performance, security, and scalability.</p>
+      <h4>Key Contributions</h4>
+      <ul>
+        <li>Full Entity-Relationship (ER) modeling for a social media schema</li>
+        <li>Strategic indexing to measurably improve read query performance</li>
+        <li>Role-Based Access Control (RBAC) for fine-grained data security</li>
+        <li>Denormalization strategies for high-traffic query paths</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p><strong>Measurably faster read performance</strong> via indexing and denormalization.</p>
+      <h4>Tech Stack</h4>
+      <p>SQL · ER Modeling · Indexing · RBAC · Database Design</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── PARTICLES ──────────────────────────────────────
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, dots = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function initDots() {
+  dots = [];
+  for (let i = 0; i < 90; i++) {
+    dots.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.8 + 0.4,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
+      alpha: Math.random() * 0.5 + 0.1,
+      color: Math.random() < 0.3 ? '#e5173f' : '#ffffff'
+    });
+  }
+}
+
+function drawDots() {
+  ctx.clearRect(0, 0, W, H);
+  dots.forEach(d => {
+    ctx.beginPath();
+    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+    ctx.fillStyle = d.color;
+    ctx.globalAlpha = d.alpha;
+    ctx.fill();
+    d.x += d.vx; d.y += d.vy;
+    if (d.x < 0) d.x = W;
+    if (d.x > W) d.x = 0;
+    if (d.y < 0) d.y = H;
+    if (d.y > H) d.y = 0;
+  });
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(drawDots);
+}
+
+resize(); initDots(); drawDots();
+window.addEventListener('resize', () => { resize(); initDots(); });
+
+// ── EXPERIENCE TABS ────────────────────────────────
+function showExp(id, btn) {
+  document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.exp-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('exp-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── MODALS ──────────────────────────────────────────
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeMBg(e, id) {
+  if (e.target === e.currentTarget) closeModal(id);
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-bg.open').forEach(m => m.classList.remove('open'));
+    document.body.style.overflow = '';
+  }
+});
+
+// ── CHATBOT ──────────────────────────────────────────
+const KB = {
+  project: "Rickpoul has 3 featured projects: <strong>MedChat LLM</strong> (Llama 2 + RAG medical chatbot), <strong>BITSBids</strong> (Spring Boot + React auction platform), and <strong>Social Media DB Design</strong> (SQL, ER modeling, RBAC). Click any card to read full details!",
+  skill: "Core skills: <strong>Java (Spring Boot)</strong>, <strong>Python</strong>, <strong>SQL</strong>, <strong>React</strong>. AI/ML: LangChain, Llama 2, RAG, PyTorch, Scikit-learn. Also: FastAPI, MySQL, REST APIs, Git.",
+  experience: "Two roles — <strong>Supply Chain Intern</strong> at Ramakrishna Forgings Ltd (May–Jul 2024) where he automated inventory workflows in Java, and an ongoing <strong>Research Assistant</strong> at BITS Pilani on battery management systems.",
+  education: "Rickpoul is doing a <strong>B.E. in ECE with Minor in Computer Intelligence</strong> at BITS Pilani, Hyderabad (2022–2026). He scored <strong>96%</strong> in Class XII at Little Flower School.",
+  contact: "Reach Rickpoul at <strong>rickpoul24@gmail.com</strong>, or on LinkedIn: linkedin.com/in/rickpoul-ghosh-32281b200 · GitHub: github.com/rickyghosh24",
+  resume: "Download the resume here: https://drive.google.com/file/d/1CM23tg20oQxASNqayYE9xOnTuHiOCd6m/view"
+};
+
+function getReply(msg) {
+  const m = msg.toLowerCase();
+  if (m.includes('project') || m.includes('build') || m.includes('medchat') || m.includes('bitsbid') || m.includes('social')) return KB.project;
+  if (m.includes('skill') || m.includes('tech') || m.includes('stack') || m.includes('java') || m.includes('python') || m.includes('ml')) return KB.skill;
+  if (m.includes('experience') || m.includes('intern') || m.includes('work') || m.includes('job') || m.includes('forging')) return KB.experience;
+  if (m.includes('edu') || m.includes('college') || m.includes('bits') || m.includes('degree') || m.includes('school') || m.includes('gpa')) return KB.education;
+  if (m.includes('contact') || m.includes('email') || m.includes('reach') || m.includes('linkedin') || m.includes('github')) return KB.contact;
+  if (m.includes('resume') || m.includes('cv')) return KB.resume;
+  if (m.match(/hi|hello|hey|yo/)) return "Hey! 👋 Ask me about Rickpoul's projects, skills, experience, education, or how to reach him!";
+  return "I can answer questions about Rickpoul's projects, skills, experience, education, and contact info. What would you like to know?";
+}
+
+function toggleChat() {
+  document.getElementById('chatWin').classList.toggle('open');
+}
+
+function sendChat() {
+  const inp = document.getElementById('chatInp');
+  const msgs = document.getElementById('chatMsgs');
+  const text = inp.value.trim();
+  if (!text) return;
+  msgs.innerHTML += `<div class="msg user">${text}</div>`;
+  inp.value = '';
+  setTimeout(() => {
+    msgs.innerHTML += `<div class="msg bot">${getReply(text)}</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 380);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function handleSend() {
+  alert('Thanks! Rickpoul will get back to you at rickpoul24@gmail.com');
+}
+
+// ── SCROLL REVEAL ────────────────────────────────────
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.proj-card,.skill-block,.edu-card,.info-tile').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(22px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  io.observe(el);
+});
+</script>
 </body>
 </html>
-
