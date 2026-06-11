@@ -6,7 +6,7 @@
 <title>Rickpoul Ghosh · Software Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -16,6 +16,60 @@ body{
   color:#e8e0e2;
   overflow-x:hidden;
   min-height:100vh;
+  cursor:none;
+}
+
+/* ── INTRO SPLASH ── */
+#splash{
+  position:fixed;inset:0;z-index:999;
+  background:#000;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .7s ease, visibility .7s ease;
+}
+#splash.hide{opacity:0;visibility:hidden}
+#splash .splash-text{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(3rem,12vw,7rem);
+  font-weight:800;
+  color:#fff;
+  letter-spacing:-0.02em;
+  opacity:0;
+  transform:scale(0.7);
+  animation:splashIn 1.1s cubic-bezier(.22,1,.36,1) forwards;
+}
+#splash .splash-text span{color:#e5173f}
+@keyframes splashIn{
+  0%{opacity:0;transform:scale(0.6)}
+  35%{opacity:1;transform:scale(1.08)}
+  55%{transform:scale(1)}
+  85%{opacity:1;transform:scale(1)}
+  100%{opacity:0;transform:scale(1.15)}
+}
+body.no-scroll{overflow:hidden}
+
+/* ── CUSTOM CURSOR ── */
+#cursor-dot{
+  position:fixed;top:0;left:0;z-index:9999;
+  width:10px;height:10px;border-radius:50%;
+  background:#e5173f;
+  box-shadow:0 0 8px 2px rgba(229,23,63,0.9), 0 0 22px 6px rgba(229,23,63,0.45);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:width .15s,height .15s,background .15s;
+}
+#cursor-ring{
+  position:fixed;top:0;left:0;z-index:9998;
+  width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(229,23,63,0.45);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,opacity .2s,border-color .2s;
+}
+#cursor-dot.active{width:16px;height:16px;background:#ff5577}
+#cursor-ring.active{width:50px;height:50px;border-color:rgba(255,85,119,0.7)}
+@media(max-width:768px){
+  body{cursor:auto}
+  #cursor-dot,#cursor-ring{display:none}
 }
 
 /* ── PARTICLE CANVAS ── */
@@ -43,7 +97,8 @@ nav{
   border-bottom:1px solid rgba(229,23,63,0.12);
 }
 .nav-logo{
-  font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;
+  font-family:'JetBrains Mono',monospace;
+  font-size:1.2rem;font-weight:800;letter-spacing:-0.02em;
   text-decoration:none;color:#fff;
 }
 .nav-logo span{color:#e5173f}
@@ -95,7 +150,87 @@ nav{
   color:rgba(232,224,226,0.6);
   letter-spacing:0.04em;
   margin-bottom:2.5rem;
+  min-height:1.6em;
 }
+.type-cursor{
+  display:inline-block;width:2px;height:1.05rem;
+  background:#e5173f;margin-left:2px;
+  vertical-align:middle;
+  animation:blink 0.9s step-end infinite;
+}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+/* ── DYNAMIC HERO VISUAL (glowing sports car silhouette) ── */
+.hero-visual{
+  width:100%;max-width:760px;
+  margin:1.5rem auto 0;
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  aspect-ratio:16/7;
+  background:
+    radial-gradient(ellipse 55% 90% at 78% 60%, rgba(255,30,60,0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 60% at 50% 100%, rgba(229,23,63,0.10) 0%, transparent 70%),
+    linear-gradient(180deg,#170509 0%,#08020a 60%,#050103 100%);
+  border:1px solid rgba(255,255,255,0.06);
+}
+.hero-visual svg{width:100%;height:100%;display:block}
+
+/* main taillight chevron */
+.tail-light{
+  filter:drop-shadow(0 0 6px #ff1a3c) drop-shadow(0 0 22px #ff1a3c);
+  animation:taillight 2.6s ease-in-out infinite;
+}
+.tail-light.delay{animation-delay:.4s}
+@keyframes taillight{
+  0%,100%{opacity:.6;filter:drop-shadow(0 0 4px #ff1a3c) drop-shadow(0 0 12px #ff1a3c)}
+  50%{opacity:1;filter:drop-shadow(0 0 14px #ff3355) drop-shadow(0 0 40px #ff1a3c)}
+}
+
+/* light bleed glow blob behind taillight */
+.tail-glow{
+  animation:tailglow 2.6s ease-in-out infinite;
+  mix-blend-mode:screen;
+}
+@keyframes tailglow{
+  0%,100%{opacity:.35;transform:scale(1)}
+  50%{opacity:.75;transform:scale(1.15)}
+}
+
+/* ground reflection of taillight */
+.tail-reflection{
+  filter:blur(3px);
+  animation:taillight 2.6s ease-in-out infinite;
+}
+
+/* horizon / road streaks */
+.hero-visual .glow-streak{
+  animation:streak 3.4s ease-in-out infinite;
+}
+@keyframes streak{
+  0%,100%{opacity:.18;transform:translateX(0)}
+  50%{opacity:.4;transform:translateX(10px)}
+}
+
+/* ambient sparks / dust particles */
+.hero-visual .spark{
+  fill:#ff8899;
+  animation:sparkfade 2.6s ease-in-out infinite;
+}
+@keyframes sparkfade{
+  0%,100%{opacity:0;transform:scale(.6)}
+  50%{opacity:1;transform:scale(1)}
+}
+
+/* subtle body sheen sweep */
+.body-sheen{
+  animation:sheen 5s ease-in-out infinite;
+}
+@keyframes sheen{
+  0%,100%{opacity:.05}
+  50%{opacity:.22}
+}
+
 .hero-divider{
   width:100%;max-width:700px;
   height:1px;
@@ -333,15 +468,50 @@ footer{
 }
 
 /* ── CHATBOT ── */
-.chat-fab{
+.chat-fab-wrap{
   position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;
-  width:52px;height:52px;border-radius:50%;
-  background:#e5173f;border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
-  box-shadow:0 4px 24px rgba(229,23,63,.45);
-  transition:transform .2s;
+  width:52px;height:52px;
 }
-.chat-fab:hover{transform:scale(1.1)}
+.chat-fab-wrap::before,
+.chat-fab-wrap::after{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:1.5px solid rgba(229,23,63,0.55);
+  animation:pulseRing 2.4s ease-out infinite;
+  pointer-events:none;
+}
+.chat-fab-wrap::after{animation-delay:1.2s}
+@keyframes pulseRing{
+  0%{transform:scale(1);opacity:.8}
+  100%{transform:scale(2.1);opacity:0}
+}
+.chat-fab{
+  position:relative;z-index:2;
+  width:52px;height:52px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #ff5577 0%, #e5173f 60%);
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+  box-shadow:0 4px 24px rgba(229,23,63,.6), 0 0 30px rgba(229,23,63,.35);
+  transition:transform .2s, box-shadow .2s;
+  animation:fabGlow 2.6s ease-in-out infinite;
+}
+.chat-fab:hover{transform:scale(1.12);box-shadow:0 4px 30px rgba(255,85,119,.8), 0 0 45px rgba(255,85,119,.5)}
+@keyframes fabGlow{
+  0%,100%{box-shadow:0 4px 24px rgba(229,23,63,.55), 0 0 26px rgba(229,23,63,.3)}
+  50%{box-shadow:0 4px 30px rgba(255,85,119,.85), 0 0 46px rgba(255,85,119,.55)}
+}
+.chat-fab-bubble{
+  position:absolute;bottom:60px;right:0;
+  background:#1a0509;border:1px solid rgba(229,23,63,.3);
+  color:rgba(232,224,226,.85);
+  padding:.5rem .9rem;border-radius:10px 10px 2px 10px;
+  font-size:.72rem;white-space:nowrap;
+  box-shadow:0 8px 24px rgba(0,0,0,.5);
+  animation:fadeUp .4s ease, bubbleFloat 3s ease-in-out infinite;
+}
+@keyframes bubbleFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
 .chat-win{
   display:none;position:fixed;bottom:4.8rem;right:1.8rem;z-index:200;
   width:320px;border-radius:14px;overflow:hidden;
@@ -429,7 +599,16 @@ footer{
 }
 </style>
 </head>
-<body>
+<body class="no-scroll">
+
+<!-- INTRO SPLASH -->
+<div id="splash">
+  <div class="splash-text">Hi, I'm <span>Rickpoul</span> 👋</div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 
 <canvas id="particles"></canvas>
 
@@ -452,7 +631,7 @@ footer{
 <!-- ─── HERO ─────────────────────────────────────── -->
 <section id="home">
   <h1 class="hero-name">Rickpoul <span>Ghosh</span></h1>
-  <p class="hero-sub">Software Developer — Java · ML · Full-Stack</p>
+  <p class="hero-sub"><span id="typeTarget"></span><span class="type-cursor"></span></p>
   <div class="hero-divider"></div>
   <div class="hero-stats">
     <div><span class="stat-num">3</span><span class="stat-label">Projects</span></div>
@@ -465,7 +644,115 @@ footer{
     <a href="https://www.linkedin.com/in/rickpoul-ghosh-32281b200/" target="_blank" class="btn btn-ghost">LinkedIn</a>
     <a href="mailto:rickpoul24@gmail.com" class="btn btn-ghost">Email</a>
   </div>
+
+  <!-- Dynamic glowing visual -->
+  <div class="hero-visual">
+    <svg viewBox="0 0 760 333" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3a3a42"/>
+          <stop offset="55%" stop-color="#1c1c22"/>
+          <stop offset="100%" stop-color="#08080b"/>
+        </linearGradient>
+        <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#15151a"/>
+          <stop offset="100%" stop-color="#2c2c34"/>
+        </linearGradient>
+        <radialGradient id="tailGlowGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff3355" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#ff1a3c" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="sheenGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#ffffff" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- horizon glow streaks -->
+      <rect class="glow-streak" x="0" y="58" width="760" height="1" fill="rgba(229,23,63,0.18)"/>
+      <rect class="glow-streak" x="0" y="98" width="760" height="1" fill="rgba(229,23,63,0.08)"/>
+
+      <!-- ambient sparks / dust particles -->
+      <circle class="spark" cx="120" cy="60" r="2"/>
+      <circle class="spark" cx="700" cy="95" r="1.6"/>
+      <circle class="spark" cx="60" cy="200" r="2.2"/>
+      <circle class="spark" cx="730" cy="230" r="1.8"/>
+
+      <!-- ground shadow -->
+      <ellipse cx="430" cy="270" rx="320" ry="16" fill="#000" opacity="0.55"/>
+
+      <!-- taillight ground reflection -->
+      <path class="tail-reflection" d="M540 282 L640 290 L632 300 L548 292 Z" fill="#ff1a3c" opacity="0.35"/>
+
+      <!-- car body: sleek rear three-quarter sports coupe -->
+      <g>
+        <!-- main lower body -->
+        <path d="M70 268
+                 C 75 220, 130 205, 190 198
+                 C 230 193, 250 178, 290 158
+                 C 360 124, 470 110, 560 122
+                 C 630 131, 685 158, 705 200
+                 C 715 222, 712 248, 700 268 Z"
+              fill="url(#bodyGrad)"/>
+
+        <!-- roof / greenhouse -->
+        <path d="M300 158
+                 C 350 122, 460 110, 545 124
+                 C 580 130, 605 142, 615 160
+                 L 560 172
+                 C 480 158, 390 160, 330 174 Z"
+              fill="url(#roofGrad)" opacity="0.92"/>
+
+        <!-- side window -->
+        <path d="M335 165 C 390 144, 470 140, 535 152 L 522 172 L 345 178 Z" fill="#06060a" opacity="0.85"/>
+
+        <!-- moving sheen sweep across the body -->
+        <rect class="body-sheen" x="120" y="150" width="500" height="70" fill="url(#sheenGrad)"/>
+
+        <!-- rear spoiler -->
+        <path d="M615 158 L 700 168 L 700 178 L 618 170 Z" fill="#101014"/>
+        <rect x="688" y="150" width="6" height="22" fill="#101014"/>
+
+        <!-- rear bumper accent line -->
+        <path d="M520 230 L 705 244 L 705 252 L 520 240 Z" fill="#0c0c10"/>
+
+        <!-- exhaust tips -->
+        <circle cx="560" cy="258" r="9" fill="#020203" stroke="#3a3a42" stroke-width="2"/>
+        <circle cx="590" cy="262" r="9" fill="#020203" stroke="#3a3a42" stroke-width="2"/>
+
+        <!-- wheels -->
+        <circle cx="200" cy="266" r="34" fill="#040406"/>
+        <circle cx="200" cy="266" r="16" fill="#2c2c34"/>
+        <circle cx="200" cy="266" r="5" fill="#0a0a0c"/>
+        <circle cx="565" cy="266" r="36" fill="#040406"/>
+        <circle cx="565" cy="266" r="17" fill="#2c2c34"/>
+        <circle cx="565" cy="266" r="5" fill="#0a0a0c"/>
+
+        <!-- ===== TAIL LIGHT CLUSTER (Y / chevron shape) ===== -->
+        <!-- soft glow blob behind the light -->
+        <ellipse class="tail-glow" cx="640" cy="195" rx="70" ry="45" fill="url(#tailGlowGrad)"/>
+
+        <!-- outer chevron -->
+        <path class="tail-light"
+              d="M598 178 L 668 186 C 676 187 682 193 683 201
+                 C 684 209 679 216 671 217 L 604 211
+                 C 597 210 592 204 592 197
+                 C 592 189 596 182 598 178 Z"
+              fill="#ff1a3c"/>
+
+        <!-- inner bright chevron core -->
+        <path class="tail-light delay"
+              d="M608 186 L 660 192 C 665 193 668 197 668 201
+                 C 668 205 665 208 660 208 L 612 204
+                 C 607 203 605 200 605 197
+                 C 605 193 607 189 608 186 Z"
+              fill="#ffb3c0"/>
+      </g>
+    </svg>
+  </div>
 </section>
+
 
 <!-- ─── ABOUT ─────────────────────────────────────── -->
 <div class="section-card" id="about">
@@ -718,7 +1005,10 @@ footer{
 <footer>🚀 Built by Rickpoul with passion for code &nbsp;·&nbsp; © 2025 Rickpoul Ghosh</footer>
 
 <!-- CHATBOT -->
-<button class="chat-fab" onclick="toggleChat()" title="Ricky-Bot">🤖</button>
+<div class="chat-fab-wrap">
+  <div class="chat-fab-bubble" id="chatBubble">Got questions? Ask me! 👋</div>
+  <button class="chat-fab" onclick="toggleChat();dismissBubble();" title="Ricky-Bot">🤖</button>
+</div>
 <div class="chat-win" id="chatWin">
   <div class="chat-head">
     <div class="chat-av">R</div>
@@ -800,6 +1090,87 @@ footer{
   </div>
 </div>
 
+<script>
+// ── INTRO SPLASH ─────────────────────────────────────
+window.addEventListener('load', () => {
+  const splash = document.getElementById('splash');
+  setTimeout(() => {
+    splash.classList.add('hide');
+    document.body.classList.remove('no-scroll');
+  }, 1600);
+});
+
+// ── CUSTOM CURSOR ────────────────────────────────────
+const cDot = document.getElementById('cursor-dot');
+const cRing = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+window.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cDot.style.left = mx + 'px';
+  cDot.style.top = my + 'px';
+});
+
+function ringLoop() {
+  rx += (mx - rx) * 0.18;
+  ry += (my - ry) * 0.18;
+  cRing.style.left = rx + 'px';
+  cRing.style.top = ry + 'px';
+  requestAnimationFrame(ringLoop);
+}
+ringLoop();
+
+document.querySelectorAll('a, button, .proj-card, .skill-item, .exp-tab-btn, input, textarea').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cDot.classList.add('active');
+    cRing.classList.add('active');
+  });
+  el.addEventListener('mouseleave', () => {
+    cDot.classList.remove('active');
+    cRing.classList.remove('active');
+  });
+});
+
+// ── TYPEWRITER ───────────────────────────────────────
+const phrases = [
+  "Software Developer — Java · ML · Full-Stack",
+  "Building backend systems with Spring Boot",
+  "Crafting ML pipelines with LangChain & RAG",
+  "Open to Internships & Research Roles"
+];
+const typeTarget = document.getElementById('typeTarget');
+let pIdx = 0, cIdx = 0, deleting = false;
+
+function typeLoop() {
+  const current = phrases[pIdx];
+  if (!deleting) {
+    cIdx++;
+    typeTarget.textContent = current.slice(0, cIdx);
+    if (cIdx === current.length) {
+      deleting = true;
+      setTimeout(typeLoop, 1600);
+      return;
+    }
+  } else {
+    cIdx--;
+    typeTarget.textContent = current.slice(0, cIdx);
+    if (cIdx === 0) {
+      deleting = false;
+      pIdx = (pIdx + 1) % phrases.length;
+    }
+  }
+  setTimeout(typeLoop, deleting ? 35 : 55);
+}
+setTimeout(typeLoop, 1700);
+
+// ── PROACTIVE CHAT BUBBLE ────────────────────────────
+const chatBubble = document.getElementById('chatBubble');
+setTimeout(() => {
+  if (chatBubble) chatBubble.style.display = 'none';
+}, 8000);
+function dismissBubble(){ if(chatBubble) chatBubble.style.display='none'; }
+
+</script>
 <script>
 // ── PARTICLES ──────────────────────────────────────
 const canvas = document.getElementById('particles');
